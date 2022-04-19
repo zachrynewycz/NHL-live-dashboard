@@ -1,29 +1,24 @@
-import { useEffect } from "react";
-
-const Scoreboard = ({teamID}) => {
-    
-    useEffect(() => {}, [teamID])
-    
+const Scoreboard = ({ gameData }) => {
     return(
-        <div className="Scoreboard">
-            <div id="game-status"></div>
+        <div className="scoreboard">
+            <div id="game-status">{gameData.gameStatus}</div>
             <div id="nhl">National Hockey League</div>
-            <button id="refresh"/>
+            <hr/>
             
-            <p id="game-time">Start Time</p>
-            <h1 id="game-score">0 - 0</h1>
-            <p id="game-clock">20:00 P1</p>
-
-            <div id="home-team">
-                <img/>
-                <p id="home-name">St. Louis Blues</p>
-                <p id="home-record">(20, 40, 10)</p>
-            </div>
+            <p id="game-date">{gameData.gameStartTime}</p>
+            <h1 id="game-score">{`${gameData.awayScore}-${gameData.homeScore}`}</h1>
+            <p id="game-clock" style={{display: gameData.gameStatus === "Final" ? "none" : ""}}>{gameData.gameClock} P{gameData.period}</p>
 
             <div id="away-team">
-                <img/>
-                <p id="away-name">Calgary Flames</p>
-                <p id="away-record">(40, 20, 10)</p>
+                <img src={`${process.env.PUBLIC_URL}/images/${gameData.awayID}.png`}/>
+                <p id="away-name">{gameData.awayName}</p>
+                <p id="away-record">{gameData.awayRecord}</p>
+            </div>
+
+            <div id="home-team">
+                <img src={`${process.env.PUBLIC_URL}/images/${gameData.homeID}.png`}/>
+                <p id="home-name">{gameData.homeName}</p>
+                <p id="home-record">{gameData.homeRecord}</p>
             </div>
         </div>
     )

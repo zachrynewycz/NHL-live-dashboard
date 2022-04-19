@@ -1,11 +1,11 @@
 const TeamSelect = ({setTeamID}) => {
     const teamData = require("../teams.json");
-
-    const clickHandler = (e) => { setTeamID(e.target.value); }   
+    
+    const changeHandler = (e) => { setTeamID(e.target.value); }   
 
     return (
         <div className="team-select">
-            <select defaultValue="" onChange={clickHandler}>
+            <select defaultValue="" onChange={changeHandler}>
                 <option value="" disabled>Select team</option>
                 
                 {teamData.map(({ name, id }) => (
