@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import TeamSelect from './components/TeamSelect';
 import Scoreboard from './components/Scoreboard';
+import Standings from './components/Standings';
+import UpcomingGames from './components/UpcomingGames';
 import './App.css';
 
 const App = () => {
@@ -49,6 +51,7 @@ const App = () => {
       <div className="App">
       <div id="left">
         <TeamSelect teamId={teamID} setTeamID={setTeamID}/>
+        <Standings/>
       </div>
 
       <div id="center">
@@ -56,6 +59,7 @@ const App = () => {
       </div>
 
       <div id="right">
+        <UpcomingGames/>
       </div>
     </div>
   )

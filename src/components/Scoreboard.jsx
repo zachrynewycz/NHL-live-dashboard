@@ -7,7 +7,7 @@ const Scoreboard = ({ gameData }) => {
             
             <p id="game-date">{gameData.gameStartTime}</p>
             <h1 id="game-score">{`${gameData.awayScore}-${gameData.homeScore}`}</h1>
-            <p id="game-clock" style={{display: gameData.gameStatus === "Final" ? "none" : ""}}>{gameData.gameClock} P{gameData.period}</p>
+            <p id="game-clock" style={{display: gameData.gameStatus === "Final" || gameData.gameStatus === "Preview" ? "none" : ""}}>{gameData.gameClock} P{gameData.period}</p>
 
             <div id="away-team">
                 <img src={`${process.env.PUBLIC_URL}/images/${gameData.awayID}.png`}/>
