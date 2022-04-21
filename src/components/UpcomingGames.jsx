@@ -2,14 +2,23 @@ import { useEffect, useState } from "react";
 import { format, addDays } from 'date-fns';
 
 const UpcomingGames = () => {
-    const [upcomingGames, setUpcomingGames] = useState({});
+    const [upcomingGames, setUpcomingGames] = useState([]);
     
     useEffect(() => {
-        // const getUpcomingGames = async () => {
-        //     return fetch(`https://statsapi.web.nhl.com/api/v1/schedule?startDate=${getCurrentDay()}?endDate=${getNextDay}`)
-        //     .then(response => response.json())
-        // }
-        // getUpcomingGames();
+        const getUpcomingGames = async () => {
+            return fetch(`https://statsapi.web.nhl.com/api/v1/schedule?&startDate=${getCurrentDay()}&endDate=${getNextDay()}`)
+            .then(response => response.json())
+            .then(({ dates }) => {
+                if (dates.length) {
+                    for (let game in dates) {
+                        let data = dates[game]
+                        console.log(data)
+                    }
+
+                }
+            })
+        }
+        getUpcomingGames();
 
     }, [])
 
