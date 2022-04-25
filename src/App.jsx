@@ -3,6 +3,7 @@ import TeamSelect from './components/TeamSelect';
 import Scoreboard from './components/Scoreboard';
 import Standings from './components/Standings';
 import UpcomingGames from './components/UpcomingGames';
+import GameStats from './components/GameStats';
 import './App.css';
 
 const App = () => {
@@ -16,12 +17,13 @@ const App = () => {
       return fetch(`https://statsapi.web.nhl.com/api/v1/schedule?teamId=${teamID}&expand=schedule.linescore`)
       .then(response => response.json())
       .then(({ dates }) => { 
-        //Check if there are games for the current day
+        //if there are games for the current day
         if(dates.length) {
           let data = dates[0].games[0]
-       
+
           setGameData({
             gameStatus: data.status.abstractGameState,
+            gameID: data.gamePk,
             gameStartTime: convertGameDate(data.gameDate),
             gameClock: data.linescore.currentPeriodTimeRemaining,
             period: data.linescore.currentPeriod,
@@ -51,15 +53,16 @@ const App = () => {
       <div className="App">
       <div id="left">
         <TeamSelect teamId={teamID} setTeamID={setTeamID}/>
-        <Standings/>
+        {/* <Standings/> */}
       </div>
 
       <div id="center">
         <Scoreboard gameData={gameData}/>
+        <GameStats gameData={gameData}/>
       </div>
 
       <div id="right">
-        <UpcomingGames/>
+        {/* <UpcomingGames/> */}
       </div>
     </div>
   )
