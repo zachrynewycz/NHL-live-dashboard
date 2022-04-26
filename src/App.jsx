@@ -9,8 +9,6 @@ import './App.css';
 const App = () => {
   const [teamID, setTeamID] = useState("");
   const [gameData, setGameData] = useState({});
-
-  useEffect(() => {}, [gameData])
   
   useEffect(() => { 
     const getGameData = async () => {

@@ -10,3 +10,7 @@ img{
 .standing-data {
     display: flex;
 }
+
+.reversed-progress {
+    transform: rotate(180deg);
+}
