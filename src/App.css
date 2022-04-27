@@ -1,16 +1,3 @@
 img{
     width: 5%;
 }
-
-.upcoming-game {
-    display: flex;
-    justify-content: space-between;
-}
-
-.standing-data {
-    display: flex;
-}
-
-.reversed-progress {
-    transform: rotate(180deg);
-}

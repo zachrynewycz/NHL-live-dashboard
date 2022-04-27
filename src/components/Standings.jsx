@@ -35,14 +35,14 @@ const Standings = () => {
 
     return(
         <div className="standings">   
-            <div id="standing-header">Team &emsp; &emsp; W L OTL</div>
+            <div id="standings__header">Team &emsp; &emsp; W L OTL</div>
             
             {standings.sort((a,b) => a.leagueRank - b.leagueRank).map((team) =>
-                <div className="standing-data">
-                    <p>{team.leagueRank}.</p>
+                <div className="standings__data">
+                    <p className="standings__rank">{team.leagueRank}.</p>
                     <img src={`${process.env.PUBLIC_URL}/images/${team.team.id}.png`}/>
-                    <p>{team.team.name}</p>
-                    <p>{team.leagueRecord.wins} {team.leagueRecord.losses} {team.leagueRecord.ot}</p>
+                    <p className="standings__teamname">{team.team.name}</p>
+                    <p className="standings__record">{team.leagueRecord.wins} {team.leagueRecord.losses} {team.leagueRecord.ot}</p>
                 </div>
             )}
         </div>

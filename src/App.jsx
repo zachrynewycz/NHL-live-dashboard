@@ -48,18 +48,18 @@ const App = () => {
     }
 
     return (
-      <div className="App">
-      <div id="left">
+    <div className="App">
+      <div id="App__left">
         <TeamSelect teamId={teamID} setTeamID={setTeamID}/>
         {/* <Standings/> */}
       </div>
 
-      <div id="center">
+      <div id="App__center">
         <Scoreboard gameData={gameData}/>
         <GameStats gameData={gameData}/>
       </div>
 
-      <div id="right">
+      <div id="App__right">
         {/* <UpcomingGames/> */}
       </div>
     </div>

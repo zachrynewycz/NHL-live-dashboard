@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 const GameStats = ({ gameData }) => {
     const [gameStats, setGameStats] = useState({});
+    //Max values used for determining the max the progress bars should display based on game stats
     const [maxValues, setMaxValues] = useState({});
     // return fetch("https://statsapi.web.nhl.com/api/v1/game/2017020659/boxscore")
     
@@ -21,6 +22,9 @@ const GameStats = ({ gameData }) => {
                     awayHits: teams.away.teamStats.teamSkaterStats.hits
                 })
             })
+            .catch((err) => {
+                console.log(err)
+            })
         }
         getGameStats()
         setProgressMax(gameStats)
@@ -37,28 +41,28 @@ const GameStats = ({ gameData }) => {
     }   
 
     return(
-        <div className="gameStats">
-            <div id="gameStats-shots">
+        <div className="gamestats">
+            <div id="gameStats__shots">
                 <p>{gameStats.awayShots} Shots {gameStats.homeShots}</p>
-                <progress max={maxValues.shots} className="reversed-progress" value={gameStats.awayShots}/>
+                <progress max={maxValues.shots} className="gamestats__shots--reversed" value={gameStats.awayShots}/>
                 <progress max={maxValues.shots} value={gameStats.homeShots}/>
             </div>
 
-            <div id="gameStats-blocks">
+            <div id="gamestats__blocks">
                 <p>{gameStats.awayBlocked} Blocks {gameStats.homeBlocked}</p>
-                <progress max={maxValues.blocks} className="reversed-progress" value={gameStats.awayBlocked}/>
+                <progress max={maxValues.blocks} className="gamestats__blocks--reversed" value={gameStats.awayBlocked}/>
                 <progress max={maxValues.blocks} value={gameStats.homeBlocked}/>
             </div>
 
-            <div id="gameStats-faceoff">
+            <div id="gamestats__faceoff">
                 <p>{gameStats.awayFaceOff} Face-Off% {gameStats.homeFaceOff}</p>
-                <progress max={maxValues.faceoff} className="reversed-progress" value={gameStats.awayFaceOff}/>
+                <progress max={maxValues.faceoff} className="gamestats__faceoff--reversed" value={gameStats.awayFaceOff}/>
                 <progress max={maxValues.faceoff} value={gameStats.homeFaceOff}/>
             </div>
 
-            <div id="gameStats-hits">
+            <div id="gamestats__hits">
                 <p>{gameStats.awayHits} Hits {gameStats.homeHits}</p>
-                <progress max={maxValues.hits} className="reversed-progress" value={gameStats.awayHits}/>
+                <progress max={maxValues.hits} className="gamestats__hits--reversed" value={gameStats.awayHits}/>
                 <progress max={maxValues.hits} value={gameStats.homeHits}/>
             </div>
         </div>

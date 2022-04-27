@@ -47,9 +47,9 @@ const UpcomingGames = () => {
     }
     
     return(
-        <div className="upcomingGames">
+        <div className="upcoming">
             {upcomingGames.map((game) => 
-                <div className="upcomingGame">
+                <div className="upcoming__games">
                     <p>{convertGameDate(game.gameDate)}</p>
                     <p>{game.teams.away.team.name}</p>
                     <img src={`${process.env.PUBLIC_URL}/images/${game.teams.away.team.id}.png`}/>
