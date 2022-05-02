@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { format, differenceInDays } from 'date-fns';
+//Components
 import TeamSelect from './components/TeamSelect';
 import Scoreboard from './components/Scoreboard';
 import Standings from './components/Standings';
@@ -29,11 +31,11 @@ const App = () => {
             homeID: data.teams.home.team.id,
             homeName: data.teams.home.team.name,
             homeScore: data.teams.home.score,
-            homeRecord: `(${data.teams.home.leagueRecord.wins}, ${data.teams.home.leagueRecord.losses}, ${data.teams.home.leagueRecord.ot})`,
+            homeRecord: `(${data.teams.home.leagueRecord.wins}, ${data.teams.home.leagueRecord.losses}, ${data.teams.home.leagueRecord.ot || ""})`,
             awayID: data.teams.away.team.id,
             awayName: data.teams.away.team.name,
             awayScore: data.teams.away.score,
-            awayRecord: `(${data.teams.away.leagueRecord.wins}, ${data.teams.away.leagueRecord.losses}, ${data.teams.away.leagueRecord.ot})`
+            awayRecord: `(${data.teams.away.leagueRecord.wins}, ${data.teams.away.leagueRecord.losses}, ${data.teams.away.leagueRecord.ot || ""})`
           }) 
         }})
       } 
@@ -42,25 +44,31 @@ const App = () => {
     }, [teamID])
     
     const convertGameDate = (start) => {
+      let currentDate = new Date()
+      let gameDate = new Date(start)
+      //converts to: Today 9:00 PM
+      if (differenceInDays(gameDate, currentDate) < 1) { 
+          return `Today ${format(new Date(start), 'p')}` 
+      }
       //converts to: 4/15, 9:00 PM
-      let date = new Date(start).toLocaleString();
-      return `${date.slice(0,4)}, ${date.slice(11,15)} ${date.slice(-2)}`
+      return `${format(new Date(start), 'M/d, p')}`
     }
 
     return (
     <div className="App">
+      <TeamSelect teamId={teamID} setTeamID={setTeamID}/>
+      
       <div id="App__left">
-        <TeamSelect teamId={teamID} setTeamID={setTeamID}/>
         {/* <Standings/> */}
       </div>
 
       <div id="App__center">
         <Scoreboard gameData={gameData}/>
-        <GameStats gameData={gameData}/>
+        {/* <GameStats gameData={gameData}/> */}
       </div>
 
       <div id="App__right">
-        {/* <UpcomingGames/> */}
+        {/* <UpcomingGames convertGameDate={convertGameDate}/> */}
       </div>
     </div>
   )

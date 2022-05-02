@@ -10,13 +10,13 @@ const Scoreboard = ({ gameData }) => {
             <p id="scoreboard__game-clock" style={{display: gameData.gameStatus === "Final" || gameData.gameStatus === "Preview" ? "none" : ""}}>{gameData.gameClock} P{gameData.period}</p>
 
             <div id="scoreboard__away">
-                <img src={`${process.env.PUBLIC_URL}/images/${gameData.awayID}.png`}/>
+                <img src={`${process.env.PUBLIC_URL}/images/svgs/${gameData.awayID}.svg`}/>
                 <p id="scoreboard__away-name">{gameData.awayName}</p>
                 <p id="scoreboard__away-record">{gameData.awayRecord}</p>
             </div>
 
             <div id="scoreboard__home">
-                <img src={`${process.env.PUBLIC_URL}/images/${gameData.homeID}.png`}/>
+                <img src={`${process.env.PUBLIC_URL}/images/svgs/${gameData.homeID}.svg`}/>
                 <p id="scoreboard__home-name">{gameData.homeName}</p>
                 <p id="scoreboard__home-record">{gameData.homeRecord}</p>
             </div>

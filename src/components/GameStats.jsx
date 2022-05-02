@@ -55,7 +55,7 @@ const GameStats = ({ gameData }) => {
             </div>
 
             <div id="gamestats__faceoff">
-                <p>{gameStats.awayFaceOff} Face-Off% {gameStats.homeFaceOff}</p>
+                <p>{gameStats.awayFaceOff} Face-off% {gameStats.homeFaceOff}</p>
                 <progress max={maxValues.faceoff} className="gamestats__faceoff--reversed" value={gameStats.awayFaceOff}/>
                 <progress max={maxValues.faceoff} value={gameStats.homeFaceOff}/>
             </div>
