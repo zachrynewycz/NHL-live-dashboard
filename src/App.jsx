@@ -27,15 +27,14 @@ const App = () => {
             gameStartTime: convertGameDate(data.gameDate),
             gameClock: data.linescore.currentPeriodTimeRemaining,
             period: data.linescore.currentPeriod,
-            isIntermission: data.linescore.intermissionInfo.isIntermission,
             homeID: data.teams.home.team.id,
             homeName: data.teams.home.team.name,
             homeScore: data.teams.home.score,
-            homeRecord: `(${data.teams.home.leagueRecord.wins}, ${data.teams.home.leagueRecord.losses}, ${data.teams.home.leagueRecord.ot || ""})`,
+            homeRecord: `(${data.teams.home.leagueRecord.wins} - ${data.teams.home.leagueRecord.losses} - ${data.teams.home.leagueRecord.ot || ""})`,
             awayID: data.teams.away.team.id,
             awayName: data.teams.away.team.name,
             awayScore: data.teams.away.score,
-            awayRecord: `(${data.teams.away.leagueRecord.wins}, ${data.teams.away.leagueRecord.losses}, ${data.teams.away.leagueRecord.ot || ""})`
+            awayRecord: `(${data.teams.away.leagueRecord.wins} - ${data.teams.away.leagueRecord.losses} - ${data.teams.away.leagueRecord.ot || ""})`
           }) 
         }})
       } 
@@ -48,26 +47,26 @@ const App = () => {
       let gameDate = new Date(start)
       //converts to: Today 9:00 PM
       if (differenceInDays(gameDate, currentDate) < 1) { 
-          return `Today ${format(new Date(start), 'p')}` 
+          return `Today ${format(gameDate, 'p')}` 
       }
       //converts to: 4/15, 9:00 PM
-      return `${format(new Date(start), 'M/d, p')}`
+      return `${format(gameDate, 'M/d, p')}`
     }
 
     return (
-    <div className="App">
+    <div className="app">
       <TeamSelect teamId={teamID} setTeamID={setTeamID}/>
       
-      <div id="App__left">
+      <div className="app__left">
         {/* <Standings/> */}
       </div>
 
-      <div id="App__center">
+      <div className="app__center">
         <Scoreboard gameData={gameData}/>
         {/* <GameStats gameData={gameData}/> */}
       </div>
 
-      <div id="App__right">
+      <div className="app__right">
         {/* <UpcomingGames convertGameDate={convertGameDate}/> */}
       </div>
     </div>

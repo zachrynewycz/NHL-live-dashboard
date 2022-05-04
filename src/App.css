@@ -1,3 +1,42 @@
 img{
     width: 10%;
 }
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.app {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-shrink: 0;
+}
+
+.app__left {
+    position: relative;
+    background-color: aqua;
+    width: 22.5%;
+    height: 100%;
+}
+
+.app__center {
+    position: relative;
+    background-color: blueviolet;
+    width: 55%;
+    height: 100%;
+}
+
+.app__right {
+    position: relative;
+    right: 0;
+    background-color: rgb(255, 200, 106);
+    width: 22.5%;
+    height: 100%;
+}
+
+.teamselect {
+    position: absolute;
+    z-index: 1;
+}

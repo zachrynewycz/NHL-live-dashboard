@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 const Standings = () => {
     const [standings, setStandings] = useState([]);
 
-    // useEffect(() => {}, [standings])
-
     useEffect(() => {
         const getStandings = async () => {
             return fetch("https://statsapi.web.nhl.com/api/v1/standings")
@@ -24,18 +22,23 @@ const Standings = () => {
     }, [])
 
     return(
-        <div className="standings">   
-            <div id="standings__header">Team &emsp; &emsp; W L OTL</div>
+        <table className="standings">   
+            <tr>
+                <th>Team</th>
+                <th>W</th>
+                <th>L</th>
+                <th>OTL</th>
+            </tr>
             
             {standings.sort((a,b) => a.leagueRank - b.leagueRank).map((team) =>
-                <div className="standings__data">
-                    <p className="standings__rank">{team.leagueRank}.</p>
+                <tr className="standings__data">
+                    <td className="standings__rank">{team.leagueRank}.</td>
                     <img src={`${process.env.PUBLIC_URL}/images/svgs/${team.team.id}.svg`}/>
-                    <p className="standings__teamname">{team.team.name}</p>
-                    <p className="standings__record">{team.leagueRecord.wins} {team.leagueRecord.losses} {team.leagueRecord.ot}</p>
-                </div>
+                    <td className="standings__teamname">{team.team.name}</td>
+                    <td className="standings__record">{team.leagueRecord.wins} {team.leagueRecord.losses} {team.leagueRecord.ot}</td>
+                </tr>
             )}
-        </div>
+        </table>
     )
 }
 
