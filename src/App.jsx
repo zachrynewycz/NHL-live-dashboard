@@ -8,6 +8,12 @@ import UpcomingGames from './components/UpcomingGames';
 import GameStats from './components/GameStats';
 import './App.css';
 
+
+
+//fix game statuses when live with bullet point
+//add pp?
+//fix records during playoff periods
+
 const App = () => {
   const [teamID, setTeamID] = useState("");
   const [gameData, setGameData] = useState({});
@@ -30,11 +36,11 @@ const App = () => {
             homeID: data.teams.home.team.id,
             homeName: data.teams.home.team.name,
             homeScore: data.teams.home.score,
-            homeRecord: `(${data.teams.home.leagueRecord.wins} - ${data.teams.home.leagueRecord.losses} - ${data.teams.home.leagueRecord.ot || ""})`,
+            homeRecord: `(${data.teams.home.leagueRecord.wins} - ${data.teams.home.leagueRecord.losses} - ${data.teams.home.leagueRecord.ot || "0"})`,
             awayID: data.teams.away.team.id,
             awayName: data.teams.away.team.name,
             awayScore: data.teams.away.score,
-            awayRecord: `(${data.teams.away.leagueRecord.wins} - ${data.teams.away.leagueRecord.losses} - ${data.teams.away.leagueRecord.ot || ""})`
+            awayRecord: `(${data.teams.away.leagueRecord.wins} - ${data.teams.away.leagueRecord.losses} - ${data.teams.away.leagueRecord.ot || "0"})`
           }) 
         }})
       } 
