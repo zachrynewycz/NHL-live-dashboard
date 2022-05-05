@@ -13,6 +13,7 @@ import './App.css';
 //fix game statuses when live with bullet point
 //add pp?
 //fix records during playoff periods
+//team lookup next game date
 
 const App = () => {
   const [teamID, setTeamID] = useState("");
@@ -64,15 +65,20 @@ const App = () => {
       <TeamSelect teamId={teamID} setTeamID={setTeamID}/>
       
       <div className="app__left">
-        {/* <Standings/> */}
+        <p id="app__left--text">Standings</p>
+        <Standings/>
       </div>
 
       <div className="app__center">
         <Scoreboard gameData={gameData}/>
-        {/* <GameStats gameData={gameData}/> */}
+        <p id="center--text">Game stats</p>
+        <GameStats gameData={gameData}/>
       </div>
 
       <div className="app__right">
+        
+        <hr/>
+        <p>Upcoming games</p>
         {/* <UpcomingGames convertGameDate={convertGameDate}/> */}
       </div>
     </div>

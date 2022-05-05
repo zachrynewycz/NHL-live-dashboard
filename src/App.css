@@ -43,6 +43,10 @@
     box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 .app {
     width: 100vw;
     height: 100vh;
@@ -54,6 +58,15 @@
     position: relative;
     width: 25%;
     height: 100%;
+}
+
+#app__left--text {
+    position: absolute;
+    font-family: Pop-S;
+    font-size: 22px;
+    color: var(--dark);
+    top: 30%;
+    left: 40px;
 }
 
 .app__center {
@@ -70,23 +83,48 @@
     height: 100%;
 }
 
+/*========== team selection =========== */
+
 .teamselect {
     position: absolute;
     z-index: 1;
+    width: 25%;
+}
+
+select {
+    height: 42px;
+    width: 82%;
+    left: 40px;
+    top: 15px;
+    position: relative;
+    font-family: Pop-M;
+    color: var(--dark);
+    border: 1px solid var(--light);
+    border-radius: 5px;
+    padding: 10px;
 }
 
 /*=========== scoreboard =========== */
+#center--text {
+    position: absolute;
+    font-family: Pop-S;
+    font-size: 22px;
+    color: rgb(147, 147, 147);
+    top: 41%;
+    left: 65px;
+}
+
 .scoreboard {
     position: absolute;
     background-color: white;
     width: 88%;
-    height: 34%;
+    height: 33%;
     margin: 0 auto;
     left: 0;
     right: 0;
     top: 45px;
     border-radius: 20px;
-    box-shadow: 1px 1px 50px 0 rgba(49, 49, 49, 0.1);
+    box-shadow: 1px 1px 10px 0 rgba(49, 49, 49, 0.1);
 }
 
 .scoreboard hr {
@@ -129,12 +167,22 @@
     color: var(--light);
 }
 
+#dot {
+    background-color: #e6445a;
+    width: 6px;
+    height: 6px;
+    margin-right: 6px;
+    border-radius: 100%;
+}
+
 #scoreboard__gamestatus--live {
     font-family: Pop-S;
     background-color: var(--live);
     color: var(--livetext);
     padding: 2.5px 20px;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
 }
 
 #scoreboard__gamestatus {
@@ -170,13 +218,14 @@
 #scoreboard__score--dash { color: var(--light);}
 
 #scoreboard__home, #scoreboard__away {
-    width: 240px;
-    top: 15px;
+    width: 220px;
+    top: 20px;
     position: relative;
 }
 
 #scoreboard__home--name, #scoreboard__away--name {
     position: relative;
+    font-size: 18px;
     font-family: Pop-S;
     color: var(--dark);
     bottom: 15px;
@@ -193,4 +242,116 @@
 #scoreboard__clock {
     color: var(--gameclock);
     font-size: 28px;
+}
+
+/*=========== standings =========== */
+.standings {
+    width: 84%;
+    height: 60%;
+    left: 0;
+    right: 0;
+    overflow-y: scroll;
+    margin: 0 auto;
+    position: absolute;
+    top: 35%;
+    border: 2px solid #f1f1f1;
+    border-radius: 8px;
+}
+
+.standings__header {
+    position: relative;
+    height: 8%;
+    width: 100%;
+    background-color: #fbfbfd;
+    border-bottom: 2px solid #f5f6f7;
+    font-family: Pop-M;
+    color: var(--light);
+    display: flex;
+    align-items: center;
+}
+
+#team {
+    position: absolute;
+    left: 30px;
+}
+
+#records {
+    position: absolute;
+    right: 20px;
+    word-spacing: 12px;
+}
+
+.standings__data {
+    position: relative;
+    left: 5px;
+    height: 10%;
+    border-bottom: 2px solid #f5f6f7;
+    display: flex;
+    align-items: center;
+}
+
+.standings__rank {
+    position: absolute;
+    font-family: Pop-M;
+    color: var(--light);
+    left: 15px;
+}
+
+.standings__data img {
+    width: 65px;
+    position: absolute;
+    left: 30px;
+}
+
+.standings__teamname {
+    position: absolute;
+    left: 95px;
+    font-family: Pop-S;
+    font-size: 13px;
+    color: var(--dark);
+}
+
+.standings__record {
+    position: absolute;
+    right: 35px;
+    word-spacing: 14px;
+    font-size: 13px;
+    font-family: Pop-M;
+    color: var(--light);
+}
+
+/*=========== gamestats =========== */
+.gamestats {
+    position: absolute;
+    background-color: white;
+    width: 88%;
+    height: 50%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: 35px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px 0 rgba(49, 49, 49, 0.1);
+}
+
+.gamestats__progress--reversed {
+    transform: rotate(180deg);
+    position: relative;
+    left: 10px;
+}
+
+.gamestats progress {
+    width: 45%;
+    height: 25px;
+}
+
+#gamestats__shots, #gamestats__blocks, #gamestats__faceoff, #gamestats__hits {
+    position: relative;
+    top: 25px;
+    word-spacing: 25px;
+    font-family: Pop-S;
+    font-size: 32px;
+    color: var(--dark);
+    margin-bottom: 15px;
 }
