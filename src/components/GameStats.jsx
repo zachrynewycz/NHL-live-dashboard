@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+const teamData = require("../teams.json");
 
 const GameStats = ({ gameData }) => {
     const [gameStats, setGameStats] = useState({});
@@ -6,7 +7,9 @@ const GameStats = ({ gameData }) => {
     
     useEffect(() => {
         const getGameStats = async () => {
-            if (!gameData.gameID) {return;}
+            //check for game data
+            if (!gameData.gameID) { return; }
+
             return fetch(`https://statsapi.web.nhl.com/api/v1/game/${gameData.gameID}/boxscore`)
             .then((response) => response.json())
             .then(({ teams }) => {
@@ -27,32 +30,39 @@ const GameStats = ({ gameData }) => {
             })
         }
         getGameStats()
+        getTeamColor()
     }, [gameData])
+
+    const getTeamColor = (currentTeamID) => {
+        for (let team in teamData) {
+            if (teamData[team].id === currentTeamID) { return teamData[team].primary }   
+        }
+    }
 
     return(
         <div className="gamestats">
             <div id="gamestats__shots">
-                <p>{gameStats.awayShots} Shots {gameStats.homeShots}</p>
-                <progress max={gameStats.shotsMax} className="gamestats__progress--reversed" value={gameStats.awayShots}/>
-                <progress max={gameStats.shotsMax} value={gameStats.homeShots}/>
+                <p>{gameStats.awayShots} <span id="grey-text">Shots</span> {gameStats.homeShots}</p>
+                <progress max={gameStats.shotsMax} style={{accentColor: getTeamColor(gameData.awayID)}} className="gamestats__progressbar--reversed" value={gameStats.awayShots}/>
+                <progress max={gameStats.shotsMax} style={{accentColor: getTeamColor(gameData.homeID)}} value={gameStats.homeShots}/>
             </div>
 
             <div id="gamestats__blocks">
-                <p>{gameStats.awayBlocked} Blocks {gameStats.homeBlocked}</p>
-                <progress max={gameStats.blockedMax} className="gamestats__progress--reversed" value={gameStats.awayBlocked}/>
-                <progress max={gameStats.blockedMax} value={gameStats.homeBlocked}/>
+                <p>{gameStats.awayBlocked} <span id="grey-text">Blocks</span> {gameStats.homeBlocked}</p>
+                <progress max={gameStats.blockedMax} style={{accentColor: getTeamColor(gameData.awayID)}} className="gamestats__progressbar--reversed" value={gameStats.awayBlocked}/>
+                <progress max={gameStats.blockedMax} style={{accentColor: getTeamColor(gameData.homeID)}} value={gameStats.homeBlocked}/>
             </div>
 
             <div id="gamestats__faceoff">
-                <p>{gameStats.awayFaceOff} Face-off% {gameStats.homeFaceOff}</p>
-                <progress max={gameStats.faceoffMax} className="gamestats__progress--reversed" value={gameStats.awayFaceOff}/>
-                <progress max={gameStats.faceoffMax} value={gameStats.homeFaceOff}/>
+                <p>{gameStats.awayFaceOff} <span id="grey-text">Face-off%</span> {gameStats.homeFaceOff}</p>
+                <progress max={gameStats.faceoffMax} style={{accentColor: getTeamColor(gameData.awayID)}} className="gamestats__progressbar--reversed" value={gameStats.awayFaceOff}/>
+                <progress max={gameStats.faceoffMax} style={{accentColor: getTeamColor(gameData.homeID)}} value={gameStats.homeFaceOff}/>
             </div>
 
             <div id="gamestats__hits">
-                <p>{gameStats.awayHits} Hits {gameStats.homeHits}</p>
-                <progress max={gameStats.hitsMax} className="gamestats__progress--reversed" value={gameStats.awayHits}/>
-                <progress max={gameStats.hitsMax} value={gameStats.homeHits}/>
+                <p>{gameStats.awayHits} <span id="grey-text">Hits</span> {gameStats.homeHits}</p>
+                <progress max={gameStats.hitsMax} style={{accentColor: getTeamColor(gameData.awayID)}} className="gamestats__progressbar--reversed" value={gameStats.awayHits}/>
+                <progress max={gameStats.hitsMax} style={{accentColor: getTeamColor(gameData.homeID)}} value={gameStats.homeHits}/>
             </div>
         </div>
     )
