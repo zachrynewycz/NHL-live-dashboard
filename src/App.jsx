@@ -8,9 +8,11 @@ import UpcomingGames from './components/UpcomingGames';
 import GameStats from './components/GameStats';
 import './App.css';
 
-//fix progress bar
-//add pp?
-//team lookup next game date
+//RE-EVALUATE GAMESTATS
+
+//PROGRESS BAR REDESIGN::TEAM COLORS FIX???
+
+//NEXT GAME LOOKUP VIA SCOREBOARD::PP
 
 const App = () => {
   const [teamID, setTeamID] = useState("");
@@ -48,13 +50,8 @@ const App = () => {
     const convertGameDate = (start) => {
       let currentDate = new Date()
       let gameDate = new Date(start)
-
-      if (differenceInDays(gameDate, currentDate) < 1) { 
-        //converts to: Today 9:00 PM
-        return `Today ${format(gameDate, 'p')}` 
-      }
-      //converts to: 4/15, 9:00 PM
-      return `${format(gameDate, 'M/d, p')}`
+      //Show "Today" if gamedate is on current day
+      return differenceInDays(gameDate, currentDate) < 1 ? `Today ${format(gameDate, 'p')}` : format(gameDate, 'M/d, p')
     }
 
     return (
@@ -74,7 +71,7 @@ const App = () => {
 
       <div className="app__right">        
         <p id="app__right--text">Upcoming games</p>
-        {/* <UpcomingGames convertGameDate={convertGameDate}/> */}
+        <UpcomingGames/>
       </div>
     </div>
   )

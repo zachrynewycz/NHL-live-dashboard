@@ -35,6 +35,7 @@ const GameStats = ({ gameData }) => {
 
     const getTeamColor = (currentTeamID) => {
         for (let team in teamData) {
+            //gets teams primary color for progress bar
             if (teamData[team].id === currentTeamID) { return teamData[team].primary }   
         }
     }

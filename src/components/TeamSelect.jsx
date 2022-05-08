@@ -1,4 +1,4 @@
-const TeamSelect = ({setTeamID}) => {
+const TeamSelect = ({ setTeamID }) => {
     const teamData = require("../teams.json");
     
     const changeHandler = (e) => { setTeamID(e.target.value); }   
