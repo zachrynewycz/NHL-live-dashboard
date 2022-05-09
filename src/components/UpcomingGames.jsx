@@ -35,13 +35,12 @@ const UpcomingGames = () => {
         else if (differenceInDays(gameDate, currentDate) === 1) {
             return `Tommorow ${format(gameDate, 'h:mma')}`
         }
-
         return format(gameDate, 'M/dd h:mma')
     }
     
     return(
         <div className="upcoming">
-            {upcomingGames.map((game) => 
+            {upcomingGames.sort().map((game) => 
                 <div className="upcoming__game">
                     <div className="upcoming__away">
                         <img src={`${process.env.PUBLIC_URL}/images/svgs/${game.teams.away.team.id}.svg`}/>

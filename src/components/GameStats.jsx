@@ -7,11 +7,7 @@ const GameStats = ({ gameData }) => {
     
     useEffect(() => {
         const getGameStats = async () => {
-            //check for game data
             if (!gameData) { return; }
-
-            //Why would i need this?
-            // if (!gameData.id) { return; }
 
             return fetch(`https://statsapi.web.nhl.com/api/v1/game/${gameData.gameID}/boxscore`)
             .then((response) => response.json())

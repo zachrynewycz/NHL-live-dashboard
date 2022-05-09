@@ -6,10 +6,11 @@ import Scoreboard from './components/Scoreboard';
 import Standings from './components/Standings';
 import UpcomingGames from './components/UpcomingGames';
 import GameStats from './components/GameStats';
+import BoxScore from './components/BoxScore';
 import './App.css';
 
 //RE-EVALUATE GAMESTATS
-//PROGRESS BAR REDESIGN::TEAM COLORS FIX???
+//PROGRESS TEAM COLORS FIX???
 //NEXT GAME LOOKUP VIA SCOREBOARD::PP???
 
 const App = () => {
@@ -31,6 +32,7 @@ const App = () => {
             gameStartTime: convertGameDate(data.gameDate),
             gameClock: data.linescore.currentPeriodTimeRemaining,
             period: data.linescore.currentPeriod,
+            boxScore: data.linescore.periods,
             homeID: data.teams.home.team.id,
             homeName: data.teams.home.team.name,
             homeScore: data.teams.home.score,
@@ -63,11 +65,11 @@ const App = () => {
 
       <div className="app__center">
         <Scoreboard gameData={gameData}/>
-        <p id="app__center--text">Game stats</p>
         <GameStats gameData={gameData}/>
       </div>
 
-      <div className="app__right">        
+      <div className="app__right">    
+        {/* <BoxScore gameData={gameData}/> */}
         <p id="app__right--text">Upcoming games</p>
         <UpcomingGames/>
       </div>
