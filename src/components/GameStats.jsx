@@ -8,7 +8,10 @@ const GameStats = ({ gameData }) => {
     useEffect(() => {
         const getGameStats = async () => {
             //check for game data
-            if (!gameData.gameID) { return; }
+            if (!gameData) { return; }
+
+            //Why would i need this?
+            // if (!gameData.id) { return; }
 
             return fetch(`https://statsapi.web.nhl.com/api/v1/game/${gameData.gameID}/boxscore`)
             .then((response) => response.json())
@@ -16,10 +19,10 @@ const GameStats = ({ gameData }) => {
                 setGameStats({
                     homeShots: teams.home.teamStats.teamSkaterStats.shots,
                     awayShots: teams.away.teamStats.teamSkaterStats.shots,
-                    shotsMax: Math.max(teams.away.teamStats.teamSkaterStats.shots, teams.home.teamStats.teamSkaterStats.shots) + 10,
+                    shotsMax: Math.max(teams.away.teamStats.teamSkaterStats.shots, teams.home.teamStats.teamSkaterStats.shots) + 8,
                     homeBlocked: teams.home.teamStats.teamSkaterStats.blocked,
                     awayBlocked: teams.away.teamStats.teamSkaterStats.blocked,
-                    blockedMax: Math.max(teams.home.teamStats.teamSkaterStats.blocked, teams.away.teamStats.teamSkaterStats.blocked) + 10,
+                    blockedMax: Math.max(teams.home.teamStats.teamSkaterStats.blocked, teams.away.teamStats.teamSkaterStats.blocked) + 5,
                     homeFaceOff: teams.home.teamStats.teamSkaterStats.faceOffWinPercentage,
                     awayFaceOff: teams.away.teamStats.teamSkaterStats.faceOffWinPercentage,
                     faceoffMax: Math.max(teams.home.teamStats.teamSkaterStats.faceOffWinPercentage, teams.away.teamStats.teamSkaterStats.faceOffWinPercentage) + 25,
@@ -42,29 +45,47 @@ const GameStats = ({ gameData }) => {
 
     return(
         <div className="gamestats">
-            <div id="gamestats__shots">
-                <p>{gameStats.awayShots} <span id="grey-text">Shots</span> {gameStats.homeShots}</p>
+            <div className="gamestats__row">
+                <div className="gamestats__flex">
+                    <p>{gameStats.awayShots}</p>
+                    <p id="alt">Shots on Goal</p>
+                    <p>{gameStats.homeShots}</p>
+                </div>
                 <progress max={gameStats.shotsMax} style={{accentColor: getTeamColor(gameData.awayID)}} className="gamestats__progressbar--reversed" value={gameStats.awayShots}/>
                 <progress max={gameStats.shotsMax} style={{accentColor: getTeamColor(gameData.homeID)}} value={gameStats.homeShots}/>
             </div>
 
-            <div id="gamestats__blocks">
-                <p>{gameStats.awayBlocked} <span id="grey-text">Blocks</span> {gameStats.homeBlocked}</p>
-                <progress max={gameStats.blockedMax} style={{accentColor: getTeamColor(gameData.awayID)}} className="gamestats__progressbar--reversed" value={gameStats.awayBlocked}/>
-                <progress max={gameStats.blockedMax} style={{accentColor: getTeamColor(gameData.homeID)}} value={gameStats.homeBlocked}/>
-            </div>
-
-            <div id="gamestats__faceoff">
-                <p>{gameStats.awayFaceOff} <span id="grey-text">Face-off%</span> {gameStats.homeFaceOff}</p>
+            <div className="gamestats__row">
+                <div className="gamestats__flex">
+                    <p>{gameStats.awayFaceOff}</p>
+                    <p id="alt">Faceoff Win %</p>
+                    <p>{gameStats.homeFaceOff}</p>
+                </div>
                 <progress max={gameStats.faceoffMax} style={{accentColor: getTeamColor(gameData.awayID)}} className="gamestats__progressbar--reversed" value={gameStats.awayFaceOff}/>
                 <progress max={gameStats.faceoffMax} style={{accentColor: getTeamColor(gameData.homeID)}} value={gameStats.homeFaceOff}/>
             </div>
 
-            <div id="gamestats__hits">
-                <p>{gameStats.awayHits} <span id="grey-text">Hits</span> {gameStats.homeHits}</p>
+            <div className="gamestats__row">
+                <div className="gamestats__flex">
+                    <p>{gameStats.awayHits}</p>
+                    <p id="alt">Hits</p>
+                    <p>{gameStats.homeHits}</p>
+                </div>
                 <progress max={gameStats.hitsMax} style={{accentColor: getTeamColor(gameData.awayID)}} className="gamestats__progressbar--reversed" value={gameStats.awayHits}/>
                 <progress max={gameStats.hitsMax} style={{accentColor: getTeamColor(gameData.homeID)}} value={gameStats.homeHits}/>
             </div>
+
+            <div className="gamestats__row">
+                <div className="gamestats__flex">
+                    <p>{gameStats.awayBlocked}</p>
+                    <p id="alt">Blocks</p>
+                    <p>{gameStats.homeBlocked}</p>
+                </div>
+                <progress max={gameStats.blockedMax} style={{accentColor: getTeamColor(gameData.awayID)}} className="gamestats__progressbar--reversed" value={gameStats.awayBlocked}/>
+                <progress max={gameStats.blockedMax} style={{accentColor: getTeamColor(gameData.homeID)}} value={gameStats.homeBlocked}/>
+            </div>
+
+
         </div>
     )
 }

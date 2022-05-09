@@ -9,10 +9,8 @@ import GameStats from './components/GameStats';
 import './App.css';
 
 //RE-EVALUATE GAMESTATS
-
 //PROGRESS BAR REDESIGN::TEAM COLORS FIX???
-
-//NEXT GAME LOOKUP VIA SCOREBOARD::PP
+//NEXT GAME LOOKUP VIA SCOREBOARD::PP???
 
 const App = () => {
   const [teamID, setTeamID] = useState("");

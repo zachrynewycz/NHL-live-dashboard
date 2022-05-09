@@ -2,8 +2,8 @@ const Scoreboard = ({ gameData }) => {
     return(
         <div className="scoreboard">
             <div id="scoreboard__heading">
-                <div id={gameData.gameStatus === "Live" ? "scoreboard__gamestatus--live" : "scoreboard__gamestatus"}><span id="dot" style={
-                    {display: gameData.gameStatus === "Live" ? "block": "none"}}/>{gameData.gameStatus}</div>
+                <div id={gameData.gameStatus === "Live" ? "scoreboard__gamestatus--live" : "scoreboard__gamestatus"}><span id="dot" 
+                style={{display: gameData.gameStatus === "Live" ? "block": "none"}}/>{gameData.gameStatus}</div>
                 
                 <div id="scoreboard__nhl">
                     <img src={`${process.env.PUBLIC_URL}/images/svgs/nhl-logo.svg`}></img>

@@ -28,27 +28,33 @@ const UpcomingGames = () => {
     const formatUpcomingDate = (start) => {
         let currentDate = new Date()
         let gameDate = new Date(start)
-        // Checks if game is on current day
-        return differenceInDays(gameDate, currentDate) < 1 ? format(gameDate, 'p') : format(gameDate, 'M/d')
+
+        if (differenceInDays(gameDate, currentDate) < 1) {
+            return `Today ${format(gameDate, 'h:mma')}`
+        } 
+        else if (differenceInDays(gameDate, currentDate) === 1) {
+            return `Tommorow ${format(gameDate, 'h:mma')}`
+        }
+
+        return format(gameDate, 'M/dd h:mma')
     }
     
     return(
         <div className="upcoming">
             {upcomingGames.map((game) => 
                 <div className="upcoming__game">
-                    <p id="upcoming__date">{formatUpcomingDate(game.gameDate)}</p>
-
                     <div className="upcoming__away">
-                        {game.teams.away.team.name.split(" ").splice(-1)}
                         <img src={`${process.env.PUBLIC_URL}/images/svgs/${game.teams.away.team.id}.svg`}/>
+                        {game.teams.away.team.name.split(" ").splice(-1)}
                     </div>
-                    
-                    <p id="vs">vs</p>
                     
                     <div className="upcoming__home">
                         <img src={`${process.env.PUBLIC_URL}/images/svgs/${game.teams.home.team.id}.svg`}/>
                         {game.teams.home.team.name.split(" ").splice(-1)}
                     </div>
+
+
+                    <div id="upcoming__date">{formatUpcomingDate(game.gameDate)}</div>
                 </div>
             )}
         </div>
