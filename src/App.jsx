@@ -9,8 +9,8 @@ import GameStats from './components/GameStats';
 import BoxScore from './components/BoxScore';
 import './App.css';
 
-//PROGRESS TEAM COLORS FIX
-//NEXT GAME LOOKUP VIA SCOREBOARD::PP???
+//NEXT GAME LOOKUP VIA SCOREBOARD::PP
+//REFORMAT UPCOMING GAMES
 
 const App = () => {
   const [teamID, setTeamID] = useState("");
