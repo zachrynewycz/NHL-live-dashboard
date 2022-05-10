@@ -9,8 +9,7 @@ import GameStats from './components/GameStats';
 import BoxScore from './components/BoxScore';
 import './App.css';
 
-//RE-EVALUATE GAMESTATS
-//PROGRESS TEAM COLORS FIX???
+//PROGRESS TEAM COLORS FIX
 //NEXT GAME LOOKUP VIA SCOREBOARD::PP???
 
 const App = () => {
@@ -69,8 +68,8 @@ const App = () => {
       </div>
 
       <div className="app__right">    
-        {/* <BoxScore gameData={gameData}/> */}
-        <p id="app__right--text">Upcoming games</p>
+        <BoxScore gameData={gameData}/>
+        <p id="app__right--up">Upcoming games</p>
         <UpcomingGames/>
       </div>
     </div>

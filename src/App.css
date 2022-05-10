@@ -76,8 +76,8 @@
     height: 100%;
 }
 
-#app__right--text {
-    position: relative;
+#app__right--up {
+    position: absolute;
     font-family: Pop-S;
     font-size: 20px;
     color: var(--dark);
@@ -94,12 +94,12 @@
 
 select {
     height: 42px;
-    width: 82%;
-    left: 40px;
+    width: 84%;
+    left: 8%;
     top: 15px;
     position: relative;
     font-family: Pop-M;
-    color: gray;
+    color: var(--dark);
     border-radius: 5px;
     padding: 10px;
     border: 2px solid #d7d7d7;
@@ -171,7 +171,7 @@ select {
     font-family: Pop-S;
     background-color: var(--live);
     color: var(--livetext);
-    padding: 2.5px 14px;
+    padding: 2.5px 16px;
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -278,7 +278,7 @@ select {
 .standings__data {
     position: relative;
     left: 5px;
-    height: 10%;
+    height: 10.4%;
     border-bottom: 2px solid #f5f6f7;
     display: flex;
     align-items: center;
@@ -323,45 +323,50 @@ select {
     margin: 0 auto;
     left: 0;
     right: 0;
-    text-align: center;
     bottom: 55px;
     border-radius: 10px;
     box-shadow: 1px 1px 10px 0 rgba(49, 49, 49, 0.1);
-}
-
-.gamestats progress {
-    width: 45%;
-    height: 17px;
-}
-
-.gamestats__progressbar--reversed {
-    transform: rotate(180deg);
-    position: relative;
-    left: 5px;
+    font-family: Pop-S;
+    color: var(--dark);
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .gamestats__row {
+    display: flex;
+    font-size: 24.5px;
+    margin-bottom: 30px;
     position: relative;
-    top: 28px;
-    font-family: Pop-S;
-    font-size: 28px;
-    color: var(--dark);
-    margin-bottom: 20px;
+    top: 35px;
 }
 
-#alt {
-    color: var(--dark);
-    font-size: 26px;
+.gamestats span {
+    margin-bottom: 10px;
+    display: inline-flex;
 }
 
-.gamestats__flex {
+.gamestats progress {
+    display: block;
+    height: 30px;
+    width: 100%;
+}
+
+.gamestats__home {
+    position: relative;
+    margin-left: 60px;
+    width: 50%;
+}
+
+.gamestats__away {
+    width: 50%;
+}
+
+.progress--reversed {
+    transform: rotate(180deg);
+}
+.flex {
     display: flex;
     justify-content: space-between;
-    width: 85%;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    color: var(--light);
 }
 
 /*=========== upcoming games =========== */
@@ -408,4 +413,67 @@ select {
     word-spacing: 99px;
     font-family: Pop-S;
     border-left: 2px solid rgb(217, 217, 217);
+}
+
+/*=========== boxscore =========== */
+.boxscore {
+    position: absolute;
+    width: 84%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 40px;
+    border-radius: 8px;
+    font-family: Pop-S;
+    color: var(--dark);
+    padding: 10px;
+}
+
+.boxscore__header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--dark);
+    margin-bottom: 10px;
+    margin-right: 10px;
+    padding-bottom: 5px;
+    word-spacing: 22px;
+}
+
+.boxscore__away {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--light);
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+
+.boxscore__away img, .boxscore__home img {
+    align-items: center;
+    display: flex;
+    width: 70px;
+    position: relative;
+    left: -8px;
+}
+
+.boxscore__home {
+    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--light);
+}
+
+.boxscore__away p, .boxscore__home p {
+    display: flex;
+    word-spacing: 38px;
+    position: absolute;
+    right: 20px;
+}
+
+#status-label {
+    position: relative;
+    left: 10px;
+}
+
+#period-label {
+    margin-right: 10px;
 }

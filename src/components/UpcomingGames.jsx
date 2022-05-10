@@ -40,8 +40,8 @@ const UpcomingGames = () => {
     
     return(
         <div className="upcoming">
-            {upcomingGames.sort().map((game) => 
-                <div className="upcoming__game">
+            {upcomingGames.map((game) => 
+                <div key={game.gamePk} className="upcoming__game">
                     <div className="upcoming__away">
                         <img src={`${process.env.PUBLIC_URL}/images/svgs/${game.teams.away.team.id}.svg`}/>
                         {game.teams.away.team.name.split(" ").splice(-1)}

@@ -30,7 +30,7 @@ const Standings = () => {
             </div>  
             
             {standings.sort((a,b) => a.leagueRank - b.leagueRank).map((team) =>
-                <div className="standings__data">
+                <div key={team.team.id} className="standings__data">
                     <p className="standings__rank">{team.leagueRank}.</p>
                     <img src={`${process.env.PUBLIC_URL}/images/svgs/${team.team.id}.svg`}/>
                     <p className="standings__teamname">{team.team.name}</p>
