@@ -3,7 +3,7 @@ const teamData = require("../teams.json");
 
 const GameStats = ({ gameData }) => {
     const [gameStats, setGameStats] = useState([]);
-    const max_addition = {Shots: 10, Faceoff: 30, Blocks: 10, Hits: 10}
+    const max_addition = {Shots: 15, Faceoff: 30, Blocks: 15, Hits: 10}
     // return fetch("https://statsapi.web.nhl.com/api/v1/game/2017020659/boxscore")
 
 

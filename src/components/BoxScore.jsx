@@ -15,21 +15,39 @@ const [awayData, setAwayData] = useState([])
         <div className="boxscore">   
             <div className="boxscore__header">
                 <span id="status-label">{gameData.gameStatus}</span>
-                <span>1ST 2ND 3RD {homeData[3] ? "OT" : ""} T</span>
+                <div className="boxscore__period-label">
+                    <span>1ST</span>
+                    <span>2ND</span>
+                    <span>3RD</span>
+                    {gameData.period >= 4 ? <span>OT</span> : ""}
+                    <span id="boxscore--bold">T</span>
+                </div>
             </div>
             
             <div>
                 <div className="boxscore__away">
                     <img src={`${process.env.PUBLIC_URL}/images/svgs/${gameData.awayID}.svg`}/>
-                    <p>{awayData[0] || 0} {awayData[1] || 0} {awayData[2] || 0} {awayData[3] ? awayData[3] : ""} {gameData.awayScore || 0}</p>
+
+                    <div className="boxscore__data">
+                        <span>{awayData[0] || 0}</span>
+                        <span>{awayData[1] || 0}</span>
+                        <span>{awayData[2] || 0}</span>
+                        {gameData.period >= 4 ? <span>{awayData[3]}</span> : ""}
+                        <span id="boxscore--bold">{gameData.awayScore || 0}</span>
+                    </div>
                 </div>
 
                 <div className="boxscore__home">
                     <img src={`${process.env.PUBLIC_URL}/images/svgs/${gameData.homeID}.svg`}/>
-                    <p>{homeData[0] || 0} {homeData[1] || 0} {homeData[2] || 0} {homeData[3] ? homeData[3] : ""} {gameData.homeScore || 0}</p>
 
+                    <div className="boxscore__data">
+                        <span>{homeData[0] || 0}</span>
+                        <span>{homeData[1] || 0}</span>
+                        <span>{homeData[2] || 0}</span>
+                        {gameData.period >= 4 ? <span>{homeData[3]}</span> : ""}
+                        <span id="boxscore--bold">{gameData.homeScore || 0}</span>
+                    </div>
                 </div>
-                
             </div>
         </div>
     )

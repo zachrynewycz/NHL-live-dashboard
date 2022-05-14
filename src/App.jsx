@@ -4,13 +4,13 @@ import { format, differenceInDays } from 'date-fns';
 import TeamSelect from './components/TeamSelect';
 import Scoreboard from './components/Scoreboard';
 import Standings from './components/Standings';
-import UpcomingGames from './components/UpcomingGames';
+import LastGames from './components/LastGames';
 import GameStats from './components/GameStats';
 import BoxScore from './components/BoxScore';
 import './App.css';
 
+//NHL TEAM APPAREL LINK "GET YOUR GAME ON - nhl apparel store >"
 //NEXT GAME LOOKUP VIA SCOREBOARD::PP
-//REFORMAT UPCOMING GAMES
 
 const App = () => {
   const [teamID, setTeamID] = useState("");
@@ -49,7 +49,7 @@ const App = () => {
     const convertGameDate = (start) => {
       let currentDate = new Date()
       let gameDate = new Date(start)
-      //Show "Today" if gamedate is on current day
+      //Show "Today" if gamedate is current day
       return differenceInDays(gameDate, currentDate) < 1 ? `Today ${format(gameDate, 'p')}` : format(gameDate, 'M/d, p')
     }
 
@@ -69,8 +69,8 @@ const App = () => {
 
       <div className="app__right">    
         <BoxScore gameData={gameData}/>
-        <p id="app__right--up">Upcoming games</p>
-        <UpcomingGames/>
+        <p id="app__right--up">Last games</p>
+        <LastGames/>
       </div>
     </div>
   )

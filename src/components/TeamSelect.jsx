@@ -6,7 +6,7 @@ const TeamSelect = ({ setTeamID }) => {
     return (
         <div className="teamselect">
             <select defaultValue="" onChange={changeHandler}>
-                <option value="" disabled>Select team</option>
+                <option value="" disabled>Select your team</option>
                 
                 {teamData.map(({ name, id }) => (
                     <option key={id} value={id}>{name}</option>
