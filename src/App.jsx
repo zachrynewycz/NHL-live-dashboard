@@ -7,9 +7,9 @@ import Standings from './components/Standings';
 import LastGames from './components/LastGames';
 import GameStats from './components/GameStats';
 import BoxScore from './components/BoxScore';
+import StoreLink from './components/StoreLink';
 import './App.css';
 
-//NHL TEAM APPAREL LINK "GET YOUR GAME ON - nhl apparel store >"
 //NEXT GAME LOOKUP VIA SCOREBOARD::PP
 
 const App = () => {
@@ -26,8 +26,8 @@ const App = () => {
           let data = dates[0].games[0]
 
           setGameData({
-            gameStatus: data.status.abstractGameState,
             gameID: data.gamePk,
+            gameStatus: data.status.abstractGameState,
             gameStartTime: convertGameDate(data.gameDate),
             gameClock: data.linescore.currentPeriodTimeRemaining,
             period: data.linescore.currentPeriod,
@@ -68,8 +68,14 @@ const App = () => {
       </div>
 
       <div className="app__right">    
+        <p id="app__right--box">Box score</p>
+
         <BoxScore gameData={gameData}/>
-        <p id="app__right--up">Last games</p>
+        <StoreLink/>
+
+        <hr/>
+        <p id="app__right--last">Last games</p>
+        
         <LastGames/>
       </div>
     </div>
