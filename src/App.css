@@ -150,6 +150,31 @@ option {
     box-shadow: 1px 1px 10px 0 rgba(49, 49, 49, 0.1);
 }
 
+.scoreboard__header {
+    height: 65px;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+}
+
+#scoreboard__nhl {
+    display: flex;
+    align-items: center;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+#scoreboard__nhl img { width: 67px; }
+
+#scoreboard__nhl p {
+    margin-left: -8px;
+    font-family: Pop-B;
+    font-size: 16px;
+    color: var(--dark);
+}
+
 .scoreboard hr {
     top: 65px;
     position: relative;
@@ -158,65 +183,52 @@ option {
     border: none;
 }
 
-#scoreboard__heading {
-    height: 65px;
-    width: 100%;
-    position: absolute;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-#scoreboard__nhl {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#scoreboard__nhl img {
-    width: 67px;
-}
-
-#scoreboard__nhl p {
-    margin-left: -8px;
-    font-family: Pop-B;
-    font-size: 15px;
-    color: var(--dark);
-}
-
-#scoreboard__date {
+#scoreboard__start-time {
     font-family: Pop-S;
     font-size: 17px;
+    min-width: 100px;
+    width: fit-content;
     color: gray;
+    position: absolute;
+    right: 50px;
+    background-color: #167d30;
+}
+
+#scoreboard__status {
+    position: absolute;
+    left: 50px;
+    background-color: #ededed;
+    color: var(--light);
+    font-family: Pop-S;
+    text-align: center;
+    padding: 3px;
+    border-radius: 5px;
+    width: 90px;
+}
+
+#scoreboard__status-live {
+    background-color: var(--live);
+    color: var(--livetext);
+    display: flex;
+    align-items: center;
+    position: absolute;
+    justify-content: center;
+    left: 50px;
+    font-family: Pop-S;
+    padding: 3px;
+    border-radius: 5px;
+    width: 90px;
 }
 
 #dot {
     background-color: #e6445a;
     width: 6px;
     height: 6px;
-    margin-right: 6px;
     border-radius: 100%;
+    margin-right: 5px;
 }
 
-#scoreboard__gamestatus--live {
-    font-family: Pop-S;
-    background-color: var(--live);
-    color: var(--livetext);
-    padding: 2.5px 16px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-}
-
-#scoreboard__gamestatus {
-    font-family: Pop-S;
-    background-color: #ededed;
-    color: gray;
-    padding: 2.5px 20px;
-    border-radius: 5px;
-}
-
-#scoreboard__ui {
+.scoreboard__interface {
     display: flex;
     position: absolute;    
     justify-content: space-evenly;
@@ -224,6 +236,28 @@ option {
     text-align: center;
     width: 100%;
     height: 100%;
+}
+
+#scoreboard__home, #scoreboard__away {
+    width: 220px;
+    top: 20px;
+    position: relative;
+}
+
+#scoreboard__team-name {
+    position: relative;
+    font-size: 19px;
+    font-family: Pop-S;
+    color: var(--dark);
+    bottom: 15px;
+}
+
+#scoreboard__team-record {
+    position: relative;
+    bottom: 10px;
+    font-family: Pop-S;
+    font-size: 18px;
+    color: var(--light);
 }
 
 #scoreboard__clockinfo {
@@ -240,34 +274,11 @@ option {
     margin-right: -60px;
 }
 
-#scoreboard__score--dash { color: var(--light);}
-
-#scoreboard__home, #scoreboard__away {
-    width: 220px;
-    top: 20px;
-    position: relative;
-}
-
-#scoreboard__home--name, #scoreboard__away--name {
-    position: relative;
-    font-size: 19px;
-    font-family: Pop-S;
-    color: var(--dark);
-    bottom: 15px;
-}
-
-#scoreboard__home--record, #scoreboard__away--record {
-    position: relative;
-    bottom: 10px;
-    font-family: Pop-S;
-    font-size: 18px;
-    color: var(--light);
-}
-
 #scoreboard__clock {
     color: var(--gameclock);
     font-size: 32px;
 }
+
 
 /*=========== STANDINGS =========== */
 .standings {
@@ -436,24 +447,22 @@ option {
     right: 0;
     margin: 0 auto;
     font-size: 16px;
+    white-space: nowrap;
+}
+
+.lastgames__away, .lastgames__home {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 130px;
 }
 
 .lastgames__away {
-    display: flex;
-    align-items: center;
-    position: relative;
     left: 35px;
     justify-content: end;
-    width: 130px;
 }
 
-.lastgames__home {
-    display: flex;
-    align-items: center;
-    position: relative;
-    width: 130px;
-    right: 35px;
-}
+.lastgames__home { right: 35px; }
 
 /*=========== BOXSCORE =========== */
 .boxscore {
@@ -470,7 +479,8 @@ option {
 }
 
 .boxscore img {
-    width: 65px;
+    width: 68px;
+    height: 50px;
     margin: 5px 0;
 }
 
@@ -490,7 +500,7 @@ option {
 }
 
 #status-label {
-    padding-left: 10px;
+    padding-left: 15px;
     width: 45%;
     color: gray;
     display: inline-block;

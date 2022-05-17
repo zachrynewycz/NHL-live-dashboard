@@ -43,8 +43,8 @@ const GameStats = ({ gameData }) => {
 
     const getTeamColor = (currentTeamID) => {
         //Gets the teams primary logo color for progress bar
-        for (let team in teamData) {
-            if (teamData[team].id === currentTeamID) { return teamData[team].primary }   
+        for (let i in teamData) {
+            if (teamData[i].id === currentTeamID) { return teamData[i].primary }   
         }
     }
 

@@ -1,38 +1,42 @@
 const Scoreboard = ({ gameData }) => {
-    return(
+    return (
         <div className="scoreboard">
-            <div id="scoreboard__heading">
-                <div id={gameData.gameStatus === "Live" ? "scoreboard__gamestatus--live" : "scoreboard__gamestatus"}><span id="dot" 
-                style={{display: gameData.gameStatus === "Live" ? "block": "none"}}/>{gameData.gameStatus}</div>
+            <div className="scoreboard__header">
+                <div id={gameData.gameStatus === "Live" ? "scoreboard__status-live" : "scoreboard__status"}>
+                    <span id="dot"/>
+                    {gameData.gameStatus}
+                </div>
                 
                 <div id="scoreboard__nhl">
-                    <img src={`${process.env.PUBLIC_URL}/images/svgs/nhl-logo.svg`}></img>
+                    <img src={`${process.env.PUBLIC_URL}/images/svgs/nhl-logo.svg`}/>
                     <p>National Hockey League</p>
                 </div>
                 
-                <p id="scoreboard__date" >{gameData.gameStartTime}</p>
+                <p id="scoreboard__start-time">{gameData.gameStartTime}</p>
             </div>
+           
             <hr/>
             
-            <div id="scoreboard__ui">
+            {gameData.gameID && (
+            <div className="scoreboard__interface">
                 <div id="scoreboard__away">
                     <img src={`${process.env.PUBLIC_URL}/images/svgs/${gameData.awayID}.svg`}/>
-                    <p id="scoreboard__away--name">{gameData.awayName}</p>
-                    <p id="scoreboard__away--record">{gameData.awayRecord}</p>
+                    <p id="scoreboard__team-name">{gameData.awayName}</p>
+                    <p id="scoreboard__team-record">{gameData.awayRecord}</p>
                 </div>
 
                 <div id="scoreboard__clockinfo">
-                    <h1 id="scoreboard__score">{gameData.awayScore}<span id="scoreboard__score--dash">-</span>{gameData.homeScore}</h1>
-                    <p id="scoreboard__clock" style={{display: gameData.gameStatus === "Preview" ? "none" : ""}}>{gameData.gameClock} - P{gameData.period}</p>
+                    <h1 id="scoreboard__score">{gameData.awayScore}<span style={{color: "#acacac"}}>-</span>{gameData.homeScore}</h1>
+                    <p id="scoreboard__clock">{gameData.gameStatus === "Live" ? `${gameData.gameClock} - P${gameData.period}` : ""}</p>
                 </div>
 
                 <div id="scoreboard__home">
                     <img src={`${process.env.PUBLIC_URL}/images/svgs/${gameData.homeID}.svg`}/>
-                    <p id="scoreboard__home--name">{gameData.homeName}</p>
-                    <p id="scoreboard__home--record">{gameData.homeRecord}</p>
+                    <p id="scoreboard__team-name">{gameData.homeName}</p>
+                    <p id="scoreboard__team-record">{gameData.homeRecord}</p>
                 </div>
-            </div>
-
+            </div>    
+            )}
         </div>
     )
 }
