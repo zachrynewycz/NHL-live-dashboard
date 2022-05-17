@@ -10,68 +10,59 @@ import BoxScore from './components/BoxScore';
 import StoreLink from './components/StoreLink';
 import './App.css';
 
-//https://statsapi.web.nhl.com/api/v1/seasons/current
 //NEXT GAME LOOKUP VIA SCOREBOARD::PP
 //return fetch(`https://statsapi.web.nhl.com/api/v1/schedule?teamId=${teamID}&expand=schedule.linescore`)
 
 const App = () => {
   const [teamID, setTeamID] = useState("");
   const [gameData, setGameData] = useState({});
+  const [endDate, setEndDate] = useState("")
+
+  useEffect(() => { 
+    const getGameData = async () => {
+      return fetch(`https://statsapi.web.nhl.com/api/v1/schedule?teamId=${teamID}&startDate=${format(new Date(), 'yyyy-MM-dd')}&endDate=${endDate}&expand=schedule.linescore`)
+      .then(response => response.json())
+      .then(({ dates }) => { 
+        //if there are games for the current day
+        if (dates.length) {
+          let data = dates[0].games[0]
+
+          setGameData({
+            gameID: data.gamePk,
+            gameStatus: data.status.abstractGameState,
+            gameStartTime: convertGameDate(data.gameDate),
+            gameClock: data.linescore.currentPeriodTimeRemaining,
+            period: data.linescore.currentPeriod,
+            boxScore: data.linescore.periods,
+            homeID: data.teams.home.team.id,
+            homeName: data.teams.home.team.name,
+            homeScore: data.teams.home.score,
+            homeRecord: `(${data.teams.home.leagueRecord.wins} - ${data.teams.home.leagueRecord.losses}${data.teams.home.leagueRecord.ot ? `- ${data.teams.home.leagueRecord.ot}` : ""})`,
+            awayID: data.teams.away.team.id,
+            awayName: data.teams.away.team.name,
+            awayScore: data.teams.away.score,
+            awayRecord: `(${data.teams.away.leagueRecord.wins} - ${data.teams.away.leagueRecord.losses}${data.teams.away.leagueRecord.ot ? `- ${data.teams.away.leagueRecord.ot}` : ""})`
+          }) 
+        }})
+    } 
+    getSeasonEndDate()
+    getGameData()
+  }, [teamID])
   
-  // useEffect(() => { 
-  //   const getGameData = async () => {
-  //     return fetch(`https://statsapi.web.nhl.com/api/v1/schedule?teamId=${teamID}&startDate=${format(new Date(), 'yyyy-MM-dd')}&endDate=${seasonEndDate}&expand=schedule.linescore`)
-  //     .then(response => response.json())
-  //     .then(({ dates }) => { 
-  //       //if there are games for the current day
-  //       if (dates.length) {
-  //         let data = dates[0].games[0]
-
-  //         setGameData({
-  //           gameID: data.gamePk,
-  //           gameStatus: data.status.abstractGameState,
-  //           gameStartTime: convertGameDate(data.gameDate),
-  //           gameClock: data.linescore.currentPeriodTimeRemaining,
-  //           period: data.linescore.currentPeriod,
-  //           boxScore: data.linescore.periods,
-  //           homeID: data.teams.home.team.id,
-  //           homeName: data.teams.home.team.name,
-  //           homeScore: data.teams.home.score,
-  //           homeRecord: `(${data.teams.home.leagueRecord.wins} - ${data.teams.home.leagueRecord.losses}${data.teams.home.leagueRecord.ot ? `- ${data.teams.home.leagueRecord.ot}` : ""})`,
-  //           awayID: data.teams.away.team.id,
-  //           awayName: data.teams.away.team.name,
-  //           awayScore: data.teams.away.score,
-  //           awayRecord: `(${data.teams.away.leagueRecord.wins} - ${data.teams.away.leagueRecord.losses}${data.teams.away.leagueRecord.ot ? `- ${data.teams.away.leagueRecord.ot}` : ""})`
-  //         }) 
-  //       }})
-  //     } 
-  //     getGameData()
-  //   }, [teamID])
-
-    useEffect(() => {
-      setGameData({
-        homeID: 17,
-        awayID: 19,
-        gameClock: "19:51",
-        period: "1",
-        gameStatus: "Live",
-        homeName: "Detriot Red Wings",
-        homeScore: 2,
-        awayName: "St. Louis Blues",
-        awayScore: 0,
-        awayRecord: "(5 - 20 - 5)",
-        homeRecord: "(5 - 20 - 5)",
-      }) 
-    }, [])
+  const getSeasonEndDate = async () => {
+    return fetch("https://statsapi.web.nhl.com/api/v1/seasons/current")
+    .then(response => response.json())
+    .then(({ seasons }) => setEndDate(seasons[0].seasonEndDate))
+  }  
     
-    
-    const convertGameDate = (gameStart) => {
-      let gameDate = new Date(gameStart)
-      //Show "Today" if gamedate is current day
-      return differenceInDays(new Date(), gameDate) < 1 ? `Today ${format(gameDate, 'p')}` : format(gameDate, 'M/d, p')
-    }
+  const convertGameDate = (gameStart) => {
+    let currentDate = new Date()
+    let gameDate = new Date(gameStart)
+    //Show "Today" if gamedate is current day
+    return differenceInDays(currentDate, gameDate) < 1 ? `Today ${format(gameDate, 'p')}` : format(gameDate, 'M/d, p')
+  }
 
-    return (
+  return (
     <div className="app">
       <TeamSelect teamId={teamID} setTeamID={setTeamID}/>
       
