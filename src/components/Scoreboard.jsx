@@ -12,7 +12,7 @@ const Scoreboard = ({ gameData }) => {
                     <p>National Hockey League</p>
                 </div>
                 
-                <p id="scoreboard__start-time">{gameData.gameStartTime}</p>
+                <p id="scoreboard__start-time">{gameData.gameStatus === "Final" ? "" : gameData.gameStartTime}</p>
             </div>
            
             <hr/>

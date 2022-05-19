@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+//Date-fns
 import { format, differenceInDays } from 'date-fns';
 //Components
 import TeamSelect from './components/TeamSelect';
@@ -10,56 +11,60 @@ import BoxScore from './components/BoxScore';
 import StoreLink from './components/StoreLink';
 import './App.css';
 
-//NEXT GAME LOOKUP VIA SCOREBOARD::PP
-//return fetch(`https://statsapi.web.nhl.com/api/v1/schedule?teamId=${teamID}&expand=schedule.linescore`)
-
 const App = () => {
   const [teamID, setTeamID] = useState("");
   const [gameData, setGameData] = useState({});
   const [endDate, setEndDate] = useState("")
 
   useEffect(() => { 
-    const getGameData = async () => {
-      return fetch(`https://statsapi.web.nhl.com/api/v1/schedule?teamId=${teamID}&startDate=${format(new Date(), 'yyyy-MM-dd')}&endDate=${endDate}&expand=schedule.linescore`)
-      .then(response => response.json())
-      .then(({ dates }) => { 
-        //if there are games for the current day
-        if (dates.length) {
-          let data = dates[0].games[0]
-
-          setGameData({
-            gameID: data.gamePk,
-            gameStatus: data.status.abstractGameState,
-            gameStartTime: convertGameDate(data.gameDate),
-            gameClock: data.linescore.currentPeriodTimeRemaining,
-            period: data.linescore.currentPeriod,
-            boxScore: data.linescore.periods,
-            homeID: data.teams.home.team.id,
-            homeName: data.teams.home.team.name,
-            homeScore: data.teams.home.score,
-            homeRecord: `(${data.teams.home.leagueRecord.wins} - ${data.teams.home.leagueRecord.losses}${data.teams.home.leagueRecord.ot ? `- ${data.teams.home.leagueRecord.ot}` : ""})`,
-            awayID: data.teams.away.team.id,
-            awayName: data.teams.away.team.name,
-            awayScore: data.teams.away.score,
-            awayRecord: `(${data.teams.away.leagueRecord.wins} - ${data.teams.away.leagueRecord.losses}${data.teams.away.leagueRecord.ot ? `- ${data.teams.away.leagueRecord.ot}` : ""})`
-          }) 
-        }})
-    } 
     getSeasonEndDate()
     getGameData()
   }, [teamID])
   
+  const handleData = (data) => {
+    setGameData({
+      gameID: data.gamePk,
+      gameStatus: data.status.abstractGameState,
+      gameStartTime: convertGameDate(data.gameDate),
+      gameClock: data.linescore.currentPeriodTimeRemaining,
+      period: data.linescore.currentPeriod,
+      boxScore: data.linescore.periods,
+      homeID: data.teams.home.team.id,
+      awayID: data.teams.away.team.id,
+      homeName: data.teams.home.team.name,
+      awayName: data.teams.away.team.name,
+      homeScore: data.teams.home.score,
+      awayScore: data.teams.away.score,
+      homeRecord: `(${data.teams.home.leagueRecord.wins} - ${data.teams.home.leagueRecord.losses}${data.teams.home.leagueRecord.ot ? `- ${data.teams.home.leagueRecord.ot}` : ""})`,
+      awayRecord: `(${data.teams.away.leagueRecord.wins} - ${data.teams.away.leagueRecord.losses}${data.teams.away.leagueRecord.ot ? `- ${data.teams.away.leagueRecord.ot}` : ""})`
+    }) 
+  }
+
+  const getGameData = async () => {
+    //Used for games that are played ONLY on the current day
+    return fetch(`https://statsapi.web.nhl.com/api/v1/schedule?teamId=${teamID}&expand=schedule.linescore`)
+    .then(response => response.json())
+    .then(({ dates }) => { dates.length ? handleData(dates[0].games[0]) : getNextGame() })
+  } 
+  
+  const getNextGame = async () => {
+    //Checks selected teams games on further dates
+    return fetch(`https://statsapi.web.nhl.com/api/v1/schedule?teamId=${teamID}&startDate=${format(new Date(), 'yyyy-MM-dd')}&endDate=${endDate}&expand=schedule.linescore`)
+    .then(response => response.json())
+    .then(({ dates }) => { handleData(dates[0].games[0]) })
+    .catch(() => alert("There are no upcoming games for this team"))
+  }  
+
   const getSeasonEndDate = async () => {
     return fetch("https://statsapi.web.nhl.com/api/v1/seasons/current")
     .then(response => response.json())
     .then(({ seasons }) => setEndDate(seasons[0].seasonEndDate))
   }  
-    
+  
   const convertGameDate = (gameStart) => {
-    let currentDate = new Date()
     let gameDate = new Date(gameStart)
-    //Show "Today" if gamedate is current day
-    return differenceInDays(currentDate, gameDate) < 1 ? `Today ${format(gameDate, 'p')}` : format(gameDate, 'M/d, p')
+    //Show that game is "Today" if is current day
+    return differenceInDays(new Date(), gameDate) == 0 ? `Today ${format(gameDate, 'p')}` : format(gameDate, 'M/d, p')
   }
 
   return (

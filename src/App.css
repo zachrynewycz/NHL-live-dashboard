@@ -197,8 +197,8 @@ option {
     position: absolute;
     left: 50px;
     background-color: #ededed;
-    color: var(--light);
-    font-family: Pop-S;
+    color: gray;
+    font-family: Pop-M;
     text-align: center;
     padding: 3px;
     border-radius: 5px;
@@ -271,6 +271,7 @@ option {
     letter-spacing: 55px;
     white-space: nowrap;
     margin-right: -60px;
+    background-color: #167d30;
 }
 
 #scoreboard__clock {
@@ -333,16 +334,16 @@ option {
 }
 
 .standings__data img {
-    width: 65px;
+    width: 60px;
     position: absolute;
     left: 30px;
 }
 
 .standings__teamname {
     position: absolute;
-    left: 95px;
+    left: 90px;
     font-family: Pop-S;
-    font-size: 13px;
+    font-size: 14px;
     color: var(--dark);
 }
 
@@ -411,7 +412,7 @@ option {
 /*=========== LAST GAMES =========== */
 .lastgames {
     width: 84%;
-    height: 43%;
+    height: 420px;
     bottom: 55px;
     left: 0;
     right: 0;

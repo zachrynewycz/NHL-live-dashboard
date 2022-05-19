@@ -25,7 +25,7 @@ const LastGames = () => {
     
     return(
         <div className="lastgames">
-            {lastGames.map((game) => 
+            {lastGames.filter(game => game.status.abstractGameState !== "Preview").map((game) => 
                 <div key={game.gamePk} className="lastgames__game">
                     <span className="lastgames__date">{format(new Date(game.gameDate), 'M.dd')}</span>
 

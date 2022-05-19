@@ -5,6 +5,9 @@ const [homeData, setHomeData] = useState([])
 const [awayData, setAwayData] = useState([])
 
     useEffect(() => {
+        setHomeData([]);
+        setAwayData([]);
+        
         for (let i in gameData.boxScore) {
             setHomeData((homeData) => [...homeData, gameData.boxScore[i].home.goals])
             setAwayData((awayData) => [...awayData, gameData.boxScore[i].away.goals])
