@@ -25,12 +25,12 @@ const LastGames = () => {
     
     return(
         <div className="lastgames">
-            {lastGames.filter(game => game.status.abstractGameState !== "Preview").map((game) => 
+            {lastGames.filter(game => game.status.abstractGameState !== "Preview" && game.status.abstractGameState !== "Live").map((game) => 
                 <div key={game.gamePk} className="lastgames__game">
                     <span className="lastgames__date">{format(new Date(game.gameDate), 'M.dd')}</span>
 
                     <div className="lastgames__away">
-                        <span>{game.teams.away.team.name.split(" ").pop()}</span>
+                        <span id="lastgame__team-name">{game.teams.away.team.name.split(" ").pop()}</span>
                         <img src={`${process.env.PUBLIC_URL}/images/svgs/${game.teams.away.team.id}.svg`}/>
                     </div>
                     
@@ -38,7 +38,7 @@ const LastGames = () => {
                     
                     <div className="lastgames__home">
                         <img src={`${process.env.PUBLIC_URL}/images/svgs/${game.teams.home.team.id}.svg`}/>
-                        <span>{game.teams.home.team.name.split(" ").pop()}</span>
+                        <span id="lastgame__team-name">{game.teams.home.team.name.split(" ").pop()}</span>
                     </div>
                 </div>
             )}

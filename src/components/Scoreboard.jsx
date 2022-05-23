@@ -26,7 +26,12 @@ const Scoreboard = ({ gameData }) => {
                 </div>
 
                 <div id="scoreboard__clockinfo">
-                    <h1 id="scoreboard__score">{gameData.awayScore}<span style={{color: "#acacac"}}>-</span>{gameData.homeScore}</h1>
+                    <div id="scoreboard__score">
+                        <span>{gameData.awayScore}</span>
+                        <span style={{color: "#acacac"}}>-</span>
+                        <span>{gameData.homeScore}</span>
+                    </div>
+                    
                     <p id="scoreboard__clock">{gameData.gameStatus === "Live" ? `${gameData.gameClock} - P${gameData.period}` : ""}</p>
                 </div>
 

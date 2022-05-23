@@ -1,4 +1,3 @@
-
 @font-face {
     font-family: Pop-B;
     src: url(../public/fonts/Poppins-Bold.ttf);
@@ -33,45 +32,49 @@
     box-sizing: border-box;
 }
 
-::-webkit-scrollbar {
-    display: none;
+::-webkit-scrollbar { display: none; }
+
+html { 
+    background-color: var(--center); 
 }
 
 .app {
-    width: 100vw;
     height: 100vh;
     display: flex;
-    flex-shrink: 0;
     overflow-x: hidden;
 }
 
 .app__left {
-    position: relative;
-    width: 25%;
-    height: 100%;
-}
-
-#app__left--text {
-    position: relative;
-    font-family: Pop-S;
-    font-size: 22px;
-    color: var(--dark);
-    top: 29%;
-    left: 8%;
+    background-color: white;
+    position: absolute;
+    border-radius: 15px;
+    left: 25px;
+    width: 23%;
+    height: 92%;
+    top: 31px;
+    box-shadow: 1px 1px 10px 0 rgb(49 49 49 / 20%);
+    z-index: 1;
 }
 
 .app__center {
-    position: relative;
-    background-color: var(--center);
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-color: transparent;
     width: 50%;
     height: 100%;
 }
 
 .app__right {
-    position: relative;
-    right: 0;
-    width: 25%;
-    height: 100%;
+    background-color: white;
+    position: absolute;
+    border-radius: 15px;
+    right: 25px;
+    width: 23%;
+    height: 92%;
+    top: 31px;
+    box-shadow: 1px 1px 10px 0 rgb(49 49 49 / 20%);
 }
 
 #app__right--last {
@@ -79,40 +82,40 @@
     font-family: Pop-S;
     font-size: 20px;
     color: var(--dark);
-    top: 46.5%;
-    left: 8%;
+    left: 5%;
+    top: 390px;
 }
 
-#app__right--box {
-    position: absolute;
+#app__left--text {
+    position: relative;
     font-family: Pop-S;
-    font-size: 20px;
+    font-size: 22px;
     color: var(--dark);
-    left: 8%;
-    top: 50px;
+    top: 30%;
+    left: 5%;
 }
 
 .app__right hr {
     border: 1px dashed var(--light);
-    width: 84%;
+    width: 88%;
     position: absolute;
     left: 50%;
-    top: 44%;
+    top: 370px;
     transform: translate(-50%, -50%);
 }
 
 /*========== TEAM SELECTION =========== */
 .teamselect {
     position: absolute;
-    z-index: 1;
+    z-index: 2;
     width: 25%;
 }
 
 select {
     height: 42px;
-    width: 84%;
-    left: 8%;
-    top: 45px;
+    width: 82%;
+    left: 10%;
+    top: 55px;
     position: relative;
     font-family: Pop-M;
     color: rgb(93, 93, 93);
@@ -127,9 +130,9 @@ select {
     cursor: pointer;
 }
 
-select:focus {
-    outline: none;
-}
+select:focus { outline: none; }
+
+select:hover { transform: scale(1.01);}
 
 option {
     background-color: white;
@@ -145,7 +148,7 @@ option {
     margin: 0 auto;
     left: 0;
     right: 0;
-    top: 45px;
+    top: 50px;
     border-radius: 10px;
     box-shadow: 1px 1px 10px 0 rgba(49, 49, 49, 0.1);
 }
@@ -185,17 +188,16 @@ option {
 
 #scoreboard__start-time {
     font-family: Pop-S;
-    font-size: 17px;
+    font-size: 16px;
     min-width: 100px;
-    width: fit-content;
     color: gray;
     position: absolute;
-    right: 50px;
+    right: 30px;
 }
 
 #scoreboard__status {
     position: absolute;
-    left: 50px;
+    left: 30px;
     background-color: #ededed;
     color: gray;
     font-family: Pop-M;
@@ -212,17 +214,17 @@ option {
     align-items: center;
     position: absolute;
     justify-content: center;
-    left: 50px;
+    left: 30px;
     font-family: Pop-S;
     padding: 3px;
     border-radius: 5px;
-    width: 90px;
+    width: 70px;
 }
 
 #dot {
     background-color: #e6445a;
-    width: 6px;
-    height: 6px;
+    width: 7px;
+    height: 7px;
     border-radius: 100%;
     margin-right: 5px;
 }
@@ -238,7 +240,7 @@ option {
 }
 
 #scoreboard__home, #scoreboard__away {
-    width: 220px;
+    width: 225px;
     top: 20px;
     position: relative;
 }
@@ -268,11 +270,11 @@ option {
 
 #scoreboard__score {
     color: var(--dark);
-    letter-spacing: 55px;
+    font-size: 70px;
     white-space: nowrap;
-    margin-right: -60px;
-    background-color: #167d30;
 }
+
+#scoreboard__score span {margin: 20px;}
 
 #scoreboard__clock {
     color: var(--gameclock);
@@ -282,14 +284,14 @@ option {
 
 /*=========== STANDINGS =========== */
 .standings {
-    width: 84%;
+    width: 90%;
     height: 60%;
     left: 0;
     right: 0;
     overflow-y: scroll;
     margin: 0 auto;
     position: absolute;
-    bottom: 55px;
+    bottom: 40px;
     border: 2px solid #f1f1f1;
     border-radius: 8px;
 }
@@ -365,7 +367,7 @@ option {
     margin: 0 auto;
     left: 0;
     right: 0;
-    bottom: 55px;
+    bottom: 60px;
     border-radius: 10px;
     box-shadow: 1px 1px 10px 0 rgba(49, 49, 49, 0.1);
     font-family: Pop-S;
@@ -397,13 +399,10 @@ option {
     width: 50%;
 }
 
-.gamestats__away {
-    width: 50%;
-}
+.gamestats__away { width: 50%; }
 
-.progress--reversed {
-    transform: rotate(180deg);
-}
+.progress--reversed { transform: rotate(180deg); }
+
 .flex {
     display: flex;
     justify-content: space-between;
@@ -411,9 +410,9 @@ option {
 
 /*=========== LAST GAMES =========== */
 .lastgames {
-    width: 84%;
-    height: 420px;
-    bottom: 55px;
+    width: 90%;
+    height: 415px;
+    bottom: 40px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -426,7 +425,7 @@ option {
     color: var(--dark);
 }
 
-.lastgames img {width: 55px;}
+.lastgames img {width: 53px;}
 
 .lastgames__game {
     display: flex;
@@ -454,7 +453,7 @@ option {
     display: flex;
     align-items: center;
     position: relative;
-    width: 130px;
+    width: 35%;
 }
 
 .lastgames__away {
@@ -467,11 +466,11 @@ option {
 /*=========== BOXSCORE =========== */
 .boxscore {
     position: absolute;
-    width: 87%;
+    width: 92%;
     left: 0;
     right: 0;
     margin: 0 auto;
-    top: 85px;
+    top: 25px;
     border-radius: 8px;
     font-family: Pop-M;
     color: var(--dark);
@@ -489,9 +488,7 @@ option {
     color: black;
 }
 
-.boxscore__header {
-    border-bottom: 2px solid var(--dark);
-}
+.boxscore__header { border-bottom: 2px solid var(--dark); }
 
 .boxscore__away, .boxscore__home {
     border-bottom: 1px solid var(--light);
@@ -500,7 +497,7 @@ option {
 }
 
 #status-label {
-    padding-left: 15px;
+    padding-left: 10px;
     width: 45%;
     color: gray;
     display: inline-block;
@@ -530,12 +527,12 @@ option {
 /*=========== STORE LINK =========== */
 .storelink {
     position: absolute;
-    width: 84%;
+    width: 90%;
     height: 85px;
     left: 0;
     right: 0;
     margin: 0 auto;
-    top: 275px;
+    top: 245px;
     border-radius: 10px;
     background-image: linear-gradient(90deg, #202020 20%, #454545 100%);
     padding-left: 15px;
@@ -544,9 +541,7 @@ option {
     cursor: pointer;
 }
 
-.storelink:hover {
-    transform: scale(1.01);
-}
+.storelink:hover { transform: scale(1.01); }
 
 #storelink__p1 {
     font-family: Pop-S;
@@ -572,4 +567,147 @@ option {
     width: 36px;
     height: 36px;
     right: 20px;
+}
+
+@media only screen and (max-width: 1750px){ 
+    #lastgame__team-name {display: none;}
+
+    .standings__teamname {display: none;}
+
+    .standings__record {word-spacing: 25px;}
+
+    #records {word-spacing: 22px;}
+
+    #storelink__p1 {
+        font-size: 15px;
+        top: 25px;
+    }
+
+    #storelink__p2 {font-size: 12px;}
+    
+    #storelink__store-btn {
+        width: 28px;
+        height: 28px;
+    }
+
+    .lastgames__away, .lastgames__home {width: 25%;}
+}
+
+@media only screen and (max-width: 1200px) {
+    .app__left {display: none;}
+
+    .app__center {
+        width: 70%;
+        right: 550px;
+    }
+    
+    .app__right {
+        width: 30%;
+        right: 10px;
+    }
+
+    .scoreboard {top: 100px;}
+
+    #scoreboard__team-name {font-size: 15px;}
+
+    .gamestats {height: 425px;}
+
+    .gamestats__row {font-size: 20px;}
+
+    .teamselect {
+        left: 1%;
+        width: 30%;
+    }
+
+    select {
+        height: 42px;
+        width: 90%;
+        top: 30px;
+        background-color: white;
+        box-shadow: 1px 1px 10px 0 rgba(49, 49, 49, 0.1);
+    }
+
+    #scoreboard__status {
+        font-size: 14px;
+        left: 25px;
+    }
+
+    #scoreboard__status-live {
+        font-size: 14px;
+        left: 25px;
+        width: 70px;
+    }
+
+    #scoreboard__start-time {
+        font-size: 14px;
+        right: 25px;
+    }
+}
+
+
+@media only screen and (max-width: 750px){
+    .app__center {
+        width: 100%;
+        top: 50px;
+    }
+
+    .app__right {
+        width: 100%;
+        right: 0;
+        top: 420px;
+    }
+
+    .teamselect {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    select {
+        height: 42px;
+        width: 88%;
+        left: -5px;
+        top: 25px;
+    }
+
+    .scoreboard {
+        height: 250px;
+        top: 50px;
+    }
+
+    #scoreboard__clock {font-size: 25px;}
+    
+    #scoreboard__score {font-size: 40px;}
+
+    #scoreboard__score span {margin: 8px;}
+
+    #scoreboard__team-name {display: none;}
+
+    #scoreboard__nhl p {display: none;}
+
+    #scoreboard__home, #scoreboard__away {top: 25px;}
+
+    #scoreboard__team-record {font-size: 15px;}
+
+    #scoreboard__status {
+        left: 15px;
+        font-size: 13px;
+        width: 80px;
+    }
+
+    #scoreboard__start-time {
+        font-size: 15px;
+        right: 25px;
+    }
+
+    .gamestats {display:  none;}
+
+    .storelink {top: 240px;}
+
+    .lastgames {bottom: 25px;}
+
+    #lastgame__team-name {display: block;}
+    .lastgames__away, .lastgames__home {width: 35%;}
+
+    #app__right--last {top: 45%;}
 }

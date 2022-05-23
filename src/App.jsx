@@ -82,8 +82,6 @@ const App = () => {
       </div>
 
       <div className="app__right">    
-        <p id="app__right--box">Box score</p>
-
         <BoxScore gameData={gameData}/>
         <StoreLink/>
 

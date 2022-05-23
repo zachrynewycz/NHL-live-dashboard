@@ -17,7 +17,7 @@ const [awayData, setAwayData] = useState([])
     return (
         <div className="boxscore">   
             <div className="boxscore__header">
-                <span id="status-label">{gameData.gameStatus}</span>
+                <span id="status-label">Boxscore</span>
                 <div className="boxscore__period-label">
                     <span>1ST</span>
                     <span>2ND</span>
