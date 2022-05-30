@@ -50,8 +50,8 @@ html {
     border-radius: 15px;
     left: 25px;
     width: 23%;
-    height: 92%;
-    top: 31px;
+    height: 880px;
+    top: 40px;
     box-shadow: 1px 1px 10px 0 rgb(49 49 49 / 20%);
     z-index: 1;
 }
@@ -72,8 +72,8 @@ html {
     border-radius: 15px;
     right: 25px;
     width: 23%;
-    height: 92%;
-    top: 31px;
+    height: 880px;
+    top: 40px;
     box-shadow: 1px 1px 10px 0 rgb(49 49 49 / 20%);
 }
 
@@ -115,7 +115,7 @@ select {
     height: 42px;
     width: 82%;
     left: 10%;
-    top: 55px;
+    top: 65px;
     position: relative;
     font-family: Pop-M;
     color: rgb(93, 93, 93);
@@ -144,7 +144,7 @@ option {
     position: absolute;
     background-color: white;
     width: 88%;
-    height: 33%;
+    height: 320px;
     margin: 0 auto;
     left: 0;
     right: 0;
@@ -240,10 +240,15 @@ option {
 }
 
 #scoreboard__home, #scoreboard__away {
-    width: 225px;
+    width: 220px;
     top: 20px;
     position: relative;
 }
+
+#scoreboard__home img, #scoreboard__away img {
+    width: 90%;
+}
+
 
 #scoreboard__team-name {
     position: relative;
@@ -363,7 +368,7 @@ option {
     position: absolute;
     background-color: white;
     width: 88%;
-    height: 48%;
+    height: 460px;
     margin: 0 auto;
     left: 0;
     right: 0;
@@ -412,7 +417,7 @@ option {
 .lastgames {
     width: 90%;
     height: 415px;
-    bottom: 40px;
+    bottom: 30px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -554,8 +559,8 @@ option {
 #storelink__p2 {
     font-family: Pop-R;
     font-size: 14px;
-    position: absolute;
-    top: 45px;
+    top: -10px;
+    position: relative;
     color: #cccccc;
 }
 
@@ -570,31 +575,46 @@ option {
 }
 
 @media only screen and (max-width: 1750px){ 
-    #lastgame__team-name {display: none;}
+    #lastgame__team-name, .standings__teamname {
+        display: none;
+    }
 
-    .standings__teamname {display: none;}
+    .standings__record {
+        word-spacing: 25px;
+    }
 
-    .standings__record {word-spacing: 25px;}
-
-    #records {word-spacing: 22px;}
+    #records {
+        word-spacing: 22px;
+    }
 
     #storelink__p1 {
         font-size: 15px;
         top: 25px;
     }
 
-    #storelink__p2 {font-size: 12px;}
+    #storelink__p2 {
+        font-size: 12px;    
+        top: -5px;
+    }
     
     #storelink__store-btn {
         width: 28px;
         height: 28px;
     }
+    
+    #scoreboard__team-name {
+        font-size: 15px;
+    }
 
-    .lastgames__away, .lastgames__home {width: 25%;}
+    .lastgames__away, .lastgames__home {
+        width: 25%;
+    }
 }
 
-@media only screen and (max-width: 1200px) {
-    .app__left {display: none;}
+@media only screen and (max-width: 1400px) {
+    .app__left {
+        display: none;
+    }
 
     .app__center {
         width: 70%;
@@ -604,15 +624,38 @@ option {
     .app__right {
         width: 30%;
         right: 10px;
+        top: 100px;
+        height: 810px;
     }
 
-    .scoreboard {top: 100px;}
+    .lastgames {
+        height: 350px;
+        bottom: 25px;
+    }
 
-    #scoreboard__team-name {font-size: 15px;}
+    .lastgames__game {
+        padding: 15px;
+    }
 
-    .gamestats {height: 425px;}
+    .scoreboard {
+        top: 100px;
+    }
 
-    .gamestats__row {font-size: 20px;}
+    #scoreboard__team-name {
+        font-size: 15px;
+    }
+
+    #scoreboard__score {
+        font-size: 50px;
+    }
+
+    .gamestats {
+        height: 425px;
+    }
+
+    .gamestats__row {
+        font-size: 20px;
+    }
 
     .teamselect {
         left: 1%;
@@ -652,9 +695,11 @@ option {
     }
 
     .app__right {
-        width: 100%;
+        width: 88%;
+        top: 400px;
+        left: 0;
         right: 0;
-        top: 420px;
+        margin: 0 auto;
     }
 
     .teamselect {
@@ -675,19 +720,17 @@ option {
         top: 50px;
     }
 
-    #scoreboard__clock {font-size: 25px;}
+    #scoreboard__clock {
+        font-size: 22px;
+    }
     
-    #scoreboard__score {font-size: 40px;}
+    #scoreboard__score {
+        font-size: 30px;
+    }
 
-    #scoreboard__score span {margin: 8px;}
-
-    #scoreboard__team-name {display: none;}
-
-    #scoreboard__nhl p {display: none;}
-
-    #scoreboard__home, #scoreboard__away {top: 25px;}
-
-    #scoreboard__team-record {font-size: 15px;}
+    #scoreboard__team-name, #scoreboard__nhl p, .gamestats {
+        display: none;
+    }
 
     #scoreboard__status {
         left: 15px;
@@ -700,14 +743,56 @@ option {
         right: 25px;
     }
 
-    .gamestats {display:  none;}
+    .storelink {
+        top: 240px;
+    }
 
-    .storelink {top: 240px;}
+    .lastgames {
+        bottom: 25px;
+    }
 
-    .lastgames {bottom: 25px;}
+    #lastgame__team-name {
+        display: block;
+    }
+    
+    .lastgames__away, .lastgames__home {
+        width: 35%;
+    }
+}
 
-    #lastgame__team-name {display: block;}
-    .lastgames__away, .lastgames__home {width: 35%;}
 
-    #app__right--last {top: 45%;}
+@media only screen and (max-width: 450px) {
+    .app__right {
+        height: 750px;
+    }
+
+    #scoreboard__score span {
+        margin: 10px;
+    }
+
+    #scoreboard__clock {
+        font-size: 18px;
+    }
+
+    #scoreboard__start-time {
+        font-size: 12px;
+        right: 5px;
+    }
+
+    #scoreboard__team-record {
+        font-size: 13px;
+        top: 4px;
+    }
+
+    #lastgame__team-name {
+        display: none;
+    }
+
+    .lastgames__home, .lastgames__away {
+        justify-content: center;
+    }
+
+    .lastgames {
+        height: 300px;
+    }
 }

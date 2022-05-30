@@ -8,7 +8,7 @@ const Standings = () => {
             return fetch("https://statsapi.web.nhl.com/api/v1/standings")
             .then(response => response.json())
             .then(({ records }) => {
-                if (standings.length) { return;}
+                if (standings.length || records === null) { return;}
                 //api gets records by division
                 for (let division in records) {
                     let data = records[division].teamRecords
