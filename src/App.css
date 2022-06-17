@@ -39,39 +39,39 @@ html {
 }
 
 .app {
-    height: 100vh;
+    margin: 0 auto;
     display: flex;
-    overflow-x: hidden;
+    max-width: 1920px;
 }
 
 .app__left {
     background-color: white;
-    position: absolute;
+    margin: 0 25px;
+    position: relative;
     border-radius: 15px;
-    left: 25px;
     width: 23%;
+    max-width: 442px;
     height: 880px;
     top: 40px;
     box-shadow: 1px 1px 10px 0 rgb(49 49 49 / 20%);
-    z-index: 1;
 }
 
 .app__center {
-    position: absolute;
+    position: relative;
     left: 0;
     right: 0;
     margin: 0 auto;
-    background-color: transparent;
     width: 50%;
     height: 100%;
 }
 
 .app__right {
     background-color: white;
-    position: absolute;
+    position: relative;
     border-radius: 15px;
-    right: 25px;
+    margin: 0 25px;
     width: 23%;
+    max-width: 442px;
     height: 880px;
     top: 40px;
     box-shadow: 1px 1px 10px 0 rgb(49 49 49 / 20%);
@@ -105,18 +105,14 @@ html {
 }
 
 /*========== TEAM SELECTION =========== */
-.teamselect {
-    position: absolute;
-    z-index: 2;
-    width: 25%;
-}
 
 select {
-    height: 42px;
-    width: 82%;
-    left: 10%;
-    top: 65px;
-    position: relative;
+    position: absolute;
+    margin: 70px 40px;
+    width: 21%;
+    min-width: 235px;
+    max-width: 400px;
+    z-index: 999;
     font-family: Pop-M;
     color: rgb(93, 93, 93);
     background-color: var(--center);
@@ -141,11 +137,13 @@ option {
 
 /*=========== SCOREBOARD =========== */
 .scoreboard {
-    position: absolute;
+    position: relative;
     background-color: white;
-    width: 88%;
+    width: 87%;
+    max-width: 845px;
     height: 320px;
     margin: 0 auto;
+    margin-bottom: 175px;
     left: 0;
     right: 0;
     top: 50px;
@@ -252,7 +250,7 @@ option {
 
 #scoreboard__team-name {
     position: relative;
-    font-size: 19px;
+    font-size: 15px;
     font-family: Pop-S;
     color: var(--dark);
     bottom: 15px;
@@ -365,9 +363,10 @@ option {
 
 /*=========== GAMESTATS =========== */
 .gamestats {
-    position: absolute;
+    position: relative;
     background-color: white;
-    width: 88%;
+    width: 87%;
+    max-width: 845px;
     height: 460px;
     margin: 0 auto;
     left: 0;
@@ -574,225 +573,103 @@ option {
     right: 20px;
 }
 
-@media only screen and (max-width: 1750px){ 
-    #lastgame__team-name, .standings__teamname {
+@media only screen and (max-width: 1536px) {
+    .standings__teamname, #lastgame__team-name {
         display: none;
-    }
-
-    .standings__record {
-        word-spacing: 25px;
-    }
-
-    #records {
-        word-spacing: 22px;
     }
 
     #storelink__p1 {
-        font-size: 15px;
-        top: 25px;
+        font-size: 16px;
+        top: 24px;
     }
 
     #storelink__p2 {
-        font-size: 12px;    
-        top: -5px;
-    }
-    
-    #storelink__store-btn {
-        width: 28px;
-        height: 28px;
-    }
-    
-    #scoreboard__team-name {
-        font-size: 15px;
-    }
-
-    .lastgames__away, .lastgames__home {
-        width: 25%;
-    }
-}
-
-@media only screen and (max-width: 1400px) {
-    .app__left {
-        display: none;
-    }
-
-    .app__center {
-        width: 70%;
-        right: 550px;
-    }
-    
-    .app__right {
-        width: 30%;
-        right: 10px;
-        top: 100px;
-        height: 810px;
-    }
-
-    .lastgames {
-        height: 350px;
-        bottom: 25px;
-    }
-
-    .lastgames__game {
-        padding: 15px;
-    }
-
-    .scoreboard {
-        top: 100px;
-    }
-
-    #scoreboard__team-name {
-        font-size: 15px;
-    }
-
-    #scoreboard__score {
-        font-size: 50px;
-    }
-
-    .gamestats {
-        height: 425px;
-    }
-
-    .gamestats__row {
-        font-size: 20px;
-    }
-
-    .teamselect {
-        left: 1%;
-        width: 30%;
-    }
-
-    select {
-        height: 42px;
-        width: 90%;
-        top: 30px;
-        background-color: white;
-        box-shadow: 1px 1px 10px 0 rgba(49, 49, 49, 0.1);
-    }
-
-    #scoreboard__status {
-        font-size: 14px;
-        left: 25px;
-    }
-
-    #scoreboard__status-live {
-        font-size: 14px;
-        left: 25px;
-        width: 70px;
-    }
-
-    #scoreboard__start-time {
-        font-size: 14px;
-        right: 25px;
-    }
-}
-
-
-@media only screen and (max-width: 750px){
-    .app__center {
-        width: 100%;
-        top: 50px;
-    }
-
-    .app__right {
-        width: 88%;
-        top: 400px;
-        left: 0;
-        right: 0;
-        margin: 0 auto;
-    }
-
-    .teamselect {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-
-    select {
-        height: 42px;
-        width: 88%;
-        left: -5px;
-        top: 25px;
-    }
-
-    .scoreboard {
-        height: 250px;
-        top: 50px;
-    }
-
-    #scoreboard__clock {
-        font-size: 22px;
-    }
-    
-    #scoreboard__score {
-        font-size: 30px;
-    }
-
-    #scoreboard__team-name, #scoreboard__nhl p, .gamestats {
-        display: none;
-    }
-
-    #scoreboard__status {
-        left: 15px;
-        font-size: 13px;
-        width: 80px;
-    }
-
-    #scoreboard__start-time {
-        font-size: 15px;
-        right: 25px;
-    }
-
-    .storelink {
-        top: 240px;
-    }
-
-    .lastgames {
-        bottom: 25px;
-    }
-
-    #lastgame__team-name {
-        display: block;
-    }
-    
-    .lastgames__away, .lastgames__home {
-        width: 35%;
-    }
-}
-
-
-@media only screen and (max-width: 450px) {
-    .app__right {
-        height: 750px;
-    }
-
-    #scoreboard__score span {
-        margin: 10px;
-    }
-
-    #scoreboard__clock {
-        font-size: 18px;
-    }
-
-    #scoreboard__start-time {
         font-size: 12px;
-        right: 5px;
-    }
-
-    #scoreboard__team-record {
-        font-size: 13px;
-        top: 4px;
-    }
-
-    #lastgame__team-name {
-        display: none;
     }
 
     .lastgames__home, .lastgames__away {
         justify-content: center;
     }
+}
 
-    .lastgames {
-        height: 300px;
+
+@media only screen and (max-width: 1280px) {
+    .app__right {
+        display: none;
+    }
+
+    .app__center {
+        width: 75%;
+    }
+
+    .app__left {
+        width: 25%;
+        min-width: 270px;
+    }
+
+    .scoreboard, .gamestats {
+        min-width: 600px;
+    }
+    #scoreboard__team-name {
+        display: none;
+    }
+
+    #scoreboard__score span {
+        margin: 15px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .app__left, .app__right, #scoreboard__nhl p,  #scoreboard__team-name { 
+        display: none;
+    }
+    
+    .app__center {
+        width: 100%;
+        margin-top: 35px;
+    }
+
+    select {
+        position: absolute;
+        background-color: white;
+        margin: 15px auto;
+        left: 0;
+        right: 0;
+        width: 87%;
+        max-width: 100%;
+    }
+
+    .scoreboard, .gamestats, select {
+        min-width: 400px;
+    }
+
+    .scoreboard {
+        height: 250px;
+        margin-bottom: 150px;
+    }
+
+    #scoreboard__score {
+        font-size: 45px;
+    }
+
+    #scoreboard__score span {
+        margin: 10px;
+    }
+    
+    #scoreboard__clock {
+        font-size: 20px;
+    }
+
+    .gamestats {
+        height: 350px;
+    }
+
+    .gamestats__row {
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
+    
+    .gamestats span {
+        margin-bottom: 2px;
     }
 }

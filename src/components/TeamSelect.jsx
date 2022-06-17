@@ -4,7 +4,7 @@ const TeamSelect = ({ setTeamID }) => {
     const changeHandler = (e) => { setTeamID(e.target.value); }   
 
     return (
-        <div className="teamselect">
+        <>
             <select defaultValue="" onChange={changeHandler}>
                 <option value="" disabled>Select your team</option>
                 
@@ -12,7 +12,7 @@ const TeamSelect = ({ setTeamID }) => {
                     <option key={id} value={id}>{name}</option>
                 ))}
             </select>
-        </div>
+        </>
     );
 };
 
