@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchStandings } from "../services/fetchStandings";
+import StandingRow from "./StandingRow";
 
 const Standings = () => {
     const [standings, setStandings] = useState([]);
@@ -12,25 +13,18 @@ const Standings = () => {
     return (
         <div className="standings">
             <div className="standings__header">
-                <p id="team">Team</p>
-                <p id="records">W L OTL</p>
+                <div>Team</div>
+                <div id="records">
+                    <p>W</p>
+                    <p>L</p>
+                    <p>OTL</p>
+                </div>
             </div>
 
             {standings
-                .sort((a, b) => a.leagueRank - b.leagueRank)
-                .map((team) => (
-                    <div key={team.team.id} className="standings__data">
-                        <p className="standings__rank">{team.leagueRank}.</p>
-                        <img
-                            src={`${process.env.PUBLIC_URL}/images/svgs/${team.team.id}.svg`}
-                        />
-                        <p className="standings__teamname">{team.team.name}</p>
-                        <p className="standings__record">
-                            {team.leagueRecord.wins} {team.leagueRecord.losses}{" "}
-                            {team.leagueRecord.ot}
-                        </p>
-                    </div>
-                ))}
+            .sort((a, b) => a.leagueRank - b.leagueRank)
+            .map(team => <StandingRow key={team.team.id} team={team}/>
+            )}
         </div>
     );
 };

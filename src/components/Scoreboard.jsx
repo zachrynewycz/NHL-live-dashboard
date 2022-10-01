@@ -12,24 +12,15 @@ const Scoreboard = ({ gameData, getGameData }) => {
                 </div>
 
                 <button id="refresh" onClick={getGameData}/>
-
-                {/* <div id="scoreboard__start-time">
-                    {gameData.gameStatus !== "Final" && gameData.gameStartTime}
-                </div> */}
             </div>
-
             <hr />
 
             {gameData.gameID && (
                 <div className="scoreboard__interface">
                     <div id="scoreboard__away">
-                        <img
-                            src={`${process.env.PUBLIC_URL}/images/svgs/${gameData.awayID}.svg`}
-                        />
+                        <img src={`${process.env.PUBLIC_URL}/images/svgs/${gameData.awayID}.svg`}/>
                         <p id="scoreboard__team-name">{gameData.awayName}</p>
-                        <p id="scoreboard__team-record">
-                            {gameData.awayRecord}
-                        </p>
+                        <p id="scoreboard__team-record">{gameData.awayRecord}</p>
                     </div>
 
                     <div id="scoreboard__clockinfo">
@@ -40,12 +31,8 @@ const Scoreboard = ({ gameData, getGameData }) => {
                         </div>
 
                         <p id="scoreboard__clock">
-                            {/* {gameData.gameStatus === "Live"
-                                ? `${gameData.gameClock} - P${gameData.period}`
-                                : `${gameData.gameStartTime}`
-                            } */}
                             {gameData.gameStatus === "Live" && `${gameData.gameClock} - P${gameData.period}`}
-                            {gameData.gameStatus === "Preview" && gameData.gameStartTime}
+                            {gameData.gameStatus === "Preview" && <p id="scorboard__clock--gameDate">{gameData.gameStartTime}</p>}
                         </p>
                     </div>
 

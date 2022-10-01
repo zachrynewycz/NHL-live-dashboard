@@ -169,13 +169,6 @@ option {
     color: var(--dark);
 }
 
-#scoreboard__start-time {
-    font-family: Pop-S;
-    min-width: 100px;
-    font-size: 17px;
-    color:gray;
-}
-
 .scoreboard hr {
     top: 65px;
     position: relative;
@@ -221,14 +214,13 @@ option {
 }
 
 #refresh:hover {
-    background-size: 26px;
+    transform: rotate(45deg);
 }
-
 
 #scoreboard__status-live::before {
     background-color: #e6445a;
-    width: 7px;
-    height: 7px;
+    width: 8px;
+    height: 8px;
     border-radius: 100%;
     content: "";
     margin-right: 5px;
@@ -292,6 +284,11 @@ option {
     white-space: nowrap;
 }
 
+#scorboard__clock--gameDate {
+    color: grey;
+    font-size: 25px;
+}
+
 #scoreboard__score span {
     margin: 20px;
 }
@@ -317,7 +314,8 @@ option {
 
 .standings__header {
     position: relative;
-    height: 8%;
+    height: 40px;
+    padding: 20px;
     width: 100%;
     background-color: var(--center);
     border-bottom: 2px solid #f5f6f7;
@@ -325,55 +323,51 @@ option {
     color: gray;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
-
-#team {
-    margin-left: 50px;
-}
-
 #records {
-    position: absolute;
-    right: 20px;
-    word-spacing: 12px;
+    width: 80px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.standings__data {
-    position: relative;
-    left: 5px;
+.standings__row {
     height: 10.4%;
+    padding: 18px;
     border-bottom: 2px solid #f5f6f7;
     display: flex;
     align-items: center;
 }
 
-.standings__rank {
-    position: absolute;
-    font-family: Pop-M;
-    color: var(--light);
-    left: 15px;
+.standings__teamContainer {
+    display: flex;
+    align-items: center;
 }
 
-.standings__data img {
+.standings__rank {
+    font-family: Pop-S;
+    color: var(--dark);
+}
+
+.standings__row img {
     width: 60px;
-    position: absolute;
-    left: 30px;
 }
 
 .standings__teamname {
-    position: absolute;
-    left: 90px;
     font-family: Pop-S;
     font-size: 13px;
     color: var(--dark);
 }
 
 .standings__record {
-    position: absolute;
-    right: 35px;
-    word-spacing: 14px;
     font-size: 13px;
     font-family: Pop-M;
     color: gray;
+    display: flex;
+    justify-content: space-between;
+    width: 80px;
+    right: 25px;
+    position: absolute;
 }
 
 /*=========== GAMESTATS =========== */
@@ -495,7 +489,7 @@ option {
 
 #line-break {
     width: 100%;
-    height: 1.5px;
+    height: 2px;
     background-color: var(--center);
 }
 
