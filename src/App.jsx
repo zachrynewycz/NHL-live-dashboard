@@ -32,6 +32,7 @@ const App = () => {
         fetchGameData(teamID)
         .then(data => setGameData(data))
         .catch(() => {
+            //Get the next upcoming game if there isnt one present for the current day
             fetchNextGame(teamID)
             .then(data => setGameData(data))
             .catch(() => toast.info('No upcoming games found.', {

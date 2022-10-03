@@ -23,3 +23,6 @@ Users can view real time statistics of their favorite National Hockey League tea
 ![171071395-ba55aba5-3069-49e5-b316-9fefefe27f6b](https://user-images.githubusercontent.com/85086293/174403860-1ff5cbaf-2405-44d6-8365-4670f4e64b7f.jpg)
 
 
+## Tech/Librarys Used
+
+React, Axios, Date-Fns, React-Toast, Firebase
