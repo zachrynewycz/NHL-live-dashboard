@@ -177,7 +177,6 @@ option {
     border: none;
 }
 
-
 #scoreboard__status {
     background-color: #ededed;
     color: gray;
@@ -201,7 +200,7 @@ option {
 }
 
 #refresh {
-    z-index: 9999;
+    z-index: 999;
     cursor: pointer;
     width: 100px;
     background-color: transparent;
@@ -211,10 +210,11 @@ option {
     height: 25px;
     background-size: 24px;
     background-position: center;
+    transition: transform 0.5s ease-in-out;
 }
 
 #refresh:hover {
-    transform: rotate(45deg);
+    transform: rotate(180deg);
 }
 
 #scoreboard__status-live::before {
@@ -228,9 +228,15 @@ option {
 }
 
 @keyframes liveStatus {
-    0%   { opacity:1; }
-    50%  { opacity:0.1; }
-    100% { opacity:1; }
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.1;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .scoreboard__interface {
@@ -268,7 +274,7 @@ option {
     bottom: 10px;
     font-family: Pop-S;
     font-size: 18px;
-    color: var(--light);
+    color: gray;
 }
 
 #scoreboard__clockinfo {
@@ -326,7 +332,7 @@ option {
     justify-content: space-between;
 }
 #records {
-    width: 80px;
+    width: 75px;
     display: flex;
     justify-content: space-between;
 }
@@ -346,7 +352,8 @@ option {
 
 .standings__rank {
     font-family: Pop-S;
-    color: var(--dark);
+    width: 15px;
+    color: var(--light);
 }
 
 .standings__row img {
@@ -360,12 +367,12 @@ option {
 }
 
 .standings__record {
-    font-size: 13px;
+    font-size: 15px;
     font-family: Pop-M;
     color: gray;
     display: flex;
     justify-content: space-between;
-    width: 80px;
+    width: 70px;
     right: 25px;
     position: absolute;
 }
@@ -405,7 +412,6 @@ option {
     width: 100%;
 }
 
-
 .gamestats__home {
     position: relative;
     margin-left: 60px;
@@ -443,18 +449,17 @@ option {
     border: 2px solid #f1f1f1;
     border-radius: 8px;
     font-family: Pop-S;
-    font-size: 13px;
+    font-size: 12px;
     color: var(--dark);
 }
 
 .lastgames img {
-    width: 58px;
+    width: 56px;
 }
 
 .lastgames__scoreContainer {
     width: 65%;
 }
-
 
 .lastgames__game {
     display: flex;
@@ -477,9 +482,9 @@ option {
 .lastgames__date {
     width: 35%;
     text-align: center;
-    color:  #808080;
-    font-size: 14px;
-    font-family: Pop-R;
+    color: #808080;
+    font-size: 15px;
+    font-family: Pop-S;
 }
 
 .lastgames__score {
@@ -493,10 +498,9 @@ option {
     background-color: var(--center);
 }
 
-
 /*=========== BOXSCORE =========== */
 .boxscore {
-    position: absolute;
+    position: relative;
     width: 92%;
     left: 0;
     right: 0;
@@ -561,48 +565,52 @@ option {
 
 /*=========== STORE LINK =========== */
 .storelink {
-    position: absolute;
+    position: relative;
+    top: 80px;
     width: 90%;
     height: 75px;
     left: 0;
     right: 0;
     margin: 0 auto;
-    top: 245px;
     border-radius: 10px;
-    background-image: linear-gradient(90deg, #202020 20%, #454545 100%);
-    padding-left: 15px;
+    background-color: var(--center);
+    padding: 25px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    overflow: hidden;
+    font-family: Pop-M;
+    color: rgb(28, 28, 28);
 }
 
-.storelink:hover {
-    transform: scale(1.01);
-}
-
-#storelink__p1 {
-    font-family: Pop-S;
-    font-size: 18px;
-    color: #f0f0f0;
-}
-
-#storelink__p2 {
-    font-family: Pop-R;
-    font-size: 12px;
-    color: #cccccc;
-}
-
-#storelink__store-btn {
+#jerseyOverlay {
+    width: 150px;
+    height: 150px;
     position: absolute;
-    background-image: url(../public/images/svgs/arrow-right.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color: transparent;
-    border: none;
-    width: 32px;
-    height: 32px;
-    right: 20px;
+    bottom: 0;
+    right: 25px;
+}
+
+.storelink h1 {
+    font-size: 22px;
+}
+
+.storelink__underline {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: -50px;
+    right: 0;
+    font-size: 13px;
+}
+
+.storelink__underline p {
+    margin: -5px;
+}
+
+#shopLogo {
+    width: 115px;
+    object-fit: contain;
 }
 
 @media only screen and (max-width: 1540px) {
@@ -610,13 +618,9 @@ option {
         display: none;
     }
 
-    #storelink__p1 {
-        font-size: 16px;
-        top: 24px;
-    }
-
-    #storelink__p2 {
-        font-size: 12px;
+    #jerseyOverlay {
+        width: 120px;
+        height: 120px;
     }
 }
 

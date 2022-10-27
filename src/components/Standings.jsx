@@ -6,8 +6,8 @@ const Standings = () => {
     const [standings, setStandings] = useState([]);
 
     useEffect(() => {
-        if(standings.length) return
-        fetchStandings().then(data => setStandings([...data]))
+        if (standings.length) return;
+        fetchStandings().then((data) => setStandings([...data]));
     }, []);
 
     return (
@@ -22,9 +22,10 @@ const Standings = () => {
             </div>
 
             {standings
-            .sort((a, b) => a.leagueRank - b.leagueRank)
-            .map(team => <StandingRow key={team.team.id} team={team}/>
-            )}
+                .sort((a, b) => a.leagueRank - b.leagueRank)
+                .map((team) => (
+                    <StandingRow key={team.team.id} team={team} />
+                ))}
         </div>
     );
 };

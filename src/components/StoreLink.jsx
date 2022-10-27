@@ -6,12 +6,13 @@ const StoreLink = () => {
 
     return (
         <div className="storelink" onClick={handleStoreRedirect}>
-            <div>
-                <p id="storelink__p1">GET YOUR GAME ON &#127954;</p>
-                <p id="storelink__p2">SHOP NHL APPAREL</p>
-            </div>
+            <h1>Fan Shop</h1>
+            <img id="jerseyOverlay" src={`${process.env.PUBLIC_URL}/images/tarasenko_jersey.png`} />
 
-            <button id="storelink__store-btn"/>
+            <div className="storelink__underline">
+                <p>Handled by</p>
+                <img id="shopLogo" src={`${process.env.PUBLIC_URL}/images/nhl_shop_logo.png`} />
+            </div>
         </div>
     );
 };

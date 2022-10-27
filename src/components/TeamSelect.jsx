@@ -1,4 +1,4 @@
-import teamData from "../teams.json"
+import teamData from "../teams.json";
 
 const TeamSelect = ({ setTeamID }) => {
     const handleTeamChange = (e) => {
@@ -12,9 +12,9 @@ const TeamSelect = ({ setTeamID }) => {
                     Select your team
                 </option>
 
-                {teamData.map(({ name, id }) => (
-                    <option key={id} value={id}>
-                        {name}
+                {Object.keys(teamData).map((team) => (
+                    <option key={team} value={team}>
+                        {teamData[team].name}
                     </option>
                 ))}
             </select>

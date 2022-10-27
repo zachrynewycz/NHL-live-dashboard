@@ -1,20 +1,13 @@
 import teamData from "../teams.json";
 
-const StatRow = ({ stat, gameData}) => {
+const StatRow = ({ stat, gameData }) => {
     const max_addition = { Shots: 15, Faceoff: 30, Blocks: 10, Hits: 10 };
 
-    const getTeamsPrimaryColor = (currentTeamID) => {
-        for (let i in teamData) {
-            if (teamData[i].id === currentTeamID) return teamData[i].primary;
-        }
-    }
-
     const getProgressMax = (a, b) => {
-        return Math.max(a, b) + max_addition[stat.name.split(" ")[0]]
-    }
+        return Math.max(a, b) + max_addition[stat.name.split(" ")[0]];
+    };
 
-
-    return (  
+    return (
         <div className="gamestats__row">
             <div className="gamestats__away">
                 <div className="flex">
@@ -25,7 +18,7 @@ const StatRow = ({ stat, gameData}) => {
                 <progress
                     value={stat.away}
                     max={getProgressMax(stat.away, stat.home)}
-                    style={{ accentColor: getTeamsPrimaryColor(gameData.awayID) }}
+                    style={{ accentColor: teamData[gameData.awayID].primary }}
                 />
             </div>
 
@@ -39,11 +32,11 @@ const StatRow = ({ stat, gameData}) => {
                     className="progress--reversed"
                     value={stat.home}
                     max={getProgressMax(stat.away, stat.home)}
-                    style={{ accentColor: getTeamsPrimaryColor(gameData.homeID) }}
+                    style={{ accentColor: teamData[gameData.homeID].primary }}
                 />
             </div>
-    </div>
+        </div>
     );
-}
- 
+};
+
 export default StatRow;

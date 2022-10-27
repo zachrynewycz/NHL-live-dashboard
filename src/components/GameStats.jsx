@@ -6,15 +6,14 @@ const GameStats = ({ gameData }) => {
     const [gameStats, setGameStats] = useState([]);
 
     useEffect(() => {
-        fetchGameStats(gameData.gameID)
-        .then(data => data && setGameStats([...data]))
-    }, [gameData])
+        fetchGameStats(gameData.gameID).then((data) => data && setGameStats([...data]));
+    }, [gameData]);
 
     return (
         <div className="gamestats">
-            {gameStats.map((stat, i) => 
-                <StatRow key={i} stat={stat} gameData={gameData}/>
-            )}
+            {gameStats.map((stat, i) => (
+                <StatRow key={i} stat={stat} gameData={gameData} />
+            ))}
         </div>
     );
 };
