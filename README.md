@@ -6,16 +6,15 @@ Users can view real time statistics of their favorite National Hockey League tea
 
 ## Features
 
--   Live Scoreboard
--   Live Gamestats
--   Game Box-score
+-   Live Scores & Stats
+-   Box-score
 -   League Standings
--   Last played games with scores from each game
+-   Previous played games with final scores from each game
 
 ## Screenshots
 
-![1](https://user-images.githubusercontent.com/85086293/196320166-39ed3552-dc11-46ef-9202-7edd3b43ab8b.JPG)
+![1](https://user-images.githubusercontent.com/85086293/198466896-cd082202-7d2e-4c0d-a002-820ed1a04c02.JPG)
 
 ## Tech/Librarys Used
 
-React, Axios, Date-Fns, React-Toast, Firebase
+React, Axios, Date-Fns, React-Toast, Firebase, react-progress-bar

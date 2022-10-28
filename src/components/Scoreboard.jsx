@@ -11,7 +11,7 @@ const Scoreboard = ({ gameData, getGameData }) => {
                     <p>National Hockey League</p>
                 </div>
 
-                <button id="refresh" onClick={getGameData} />
+                <button title="Update scores" id="refresh" onClick={getGameData} />
             </div>
             <hr />
 

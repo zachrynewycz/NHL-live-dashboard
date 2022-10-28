@@ -398,32 +398,26 @@ option {
 .gamestats__row {
     display: flex;
     font-size: 22px;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     position: relative;
 }
 
-.gamestats span {
-    display: inline-flex;
-}
-
-.gamestats progress {
-    display: block;
-    height: 33px;
-    width: 100%;
+.gamestats__row:first-child {
+    margin-top: 15px;
 }
 
 .gamestats__home {
     position: relative;
-    margin-left: 60px;
+    margin-left: 65px;
     width: 50%;
+}
+
+.statValue {
+    font-family: Pop-B;
 }
 
 .gamestats__away {
     width: 50%;
-}
-
-.progress--reversed {
-    transform: rotate(180deg);
 }
 
 .flex {
@@ -432,8 +426,8 @@ option {
     align-items: flex-end;
 }
 
-.gamestats__statNumber {
-    font-size: 28px;
+.progressbar {
+    margin-top: 8px;
 }
 
 /*=========== LAST GAMES =========== */
@@ -583,7 +577,13 @@ option {
     color: rgb(28, 28, 28);
 }
 
+.storelink:hover #jerseyOverlay {
+    width: 160px;
+    height: 160px;
+}
+
 #jerseyOverlay {
+    transition: 0.1s ease-in-out;
     width: 150px;
     height: 150px;
     position: absolute;
@@ -708,5 +708,9 @@ option {
 
     .gamestats__statNumber {
         font-size: 20px;
+    }
+
+    #scorboard__clock--gameDate {
+        font-size: 15px;
     }
 }

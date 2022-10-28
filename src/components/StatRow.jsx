@@ -1,9 +1,15 @@
 import teamData from "../teams.json";
+import ProgressBar from "@ramonak/react-progress-bar";
 
 const StatRow = ({ stat, gameData }) => {
-    const max_addition = { Shots: 15, Faceoff: 30, Blocks: 10, Hits: 10 };
+    const max_addition = {
+        Shots: 15,
+        Faceoff: 30,
+        Blocks: 10,
+        Hits: 10,
+    };
 
-    const getProgressMax = (a, b) => {
+    const findMaxProgressBarValue = (a, b) => {
         return Math.max(a, b) + max_addition[stat.name.split(" ")[0]];
     };
 
@@ -12,27 +18,35 @@ const StatRow = ({ stat, gameData }) => {
             <div className="gamestats__away">
                 <div className="flex">
                     <span>{stat.name}</span>
-                    <span className="gamestats__statNumber">{stat.away}</span>
+                    <span className="statValue">{stat.away}</span>
                 </div>
 
-                <progress
-                    value={stat.away}
-                    max={getProgressMax(stat.away, stat.home)}
-                    style={{ accentColor: teamData[gameData.awayID].primary }}
+                <ProgressBar
+                    isLabelVisible={false}
+                    className="progressbar"
+                    height="16px"
+                    baseBgColor="#eaeaea"
+                    completed={stat.away}
+                    bgColor={teamData[gameData.awayID].primary}
+                    maxCompleted={findMaxProgressBarValue(stat.away, stat.home)}
                 />
             </div>
 
             <div className="gamestats__home">
                 <div className="flex">
-                    <span className="gamestats__statNumber">{stat.home}</span>
+                    <span className="statValue">{stat.home}</span>
                     <span>{stat.name}</span>
                 </div>
 
-                <progress
-                    className="progress--reversed"
-                    value={stat.home}
-                    max={getProgressMax(stat.away, stat.home)}
-                    style={{ accentColor: teamData[gameData.homeID].primary }}
+                <ProgressBar
+                    isLabelVisible={false}
+                    height="16px"
+                    className="progressbar"
+                    dir="rtl"
+                    baseBgColor="#eaeaea"
+                    completed={stat.home}
+                    bgColor={teamData[gameData.homeID].primary}
+                    maxCompleted={findMaxProgressBarValue(stat.away, stat.home)}
                 />
             </div>
         </div>

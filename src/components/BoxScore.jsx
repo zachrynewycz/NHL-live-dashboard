@@ -17,7 +17,7 @@ const BoxScore = ({ gameData }) => {
     return (
         <div className="boxscore">
             <div className="boxscore__header">
-                <span id="status-label">Boxscore</span>
+                <span id="status-label">Box-score</span>
                 <div className="boxscore__period-label">
                     <span>1ST</span>
                     <span>2ND</span>
