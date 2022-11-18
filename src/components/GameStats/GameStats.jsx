@@ -1,8 +1,11 @@
+import { useContext } from "react";
 import { useEffect, useState } from "react";
-import { fetchGameStats } from "../services/fetchGameStats";
+import { gameDataContext } from "../../context/GameDataProvider";
+import { fetchGameStats } from "../../services/fetchGameStats";
 import StatRow from "./StatRow";
 
-const GameStats = ({ gameData }) => {
+const GameStats = () => {
+    const [gameData] = useContext(gameDataContext);
     const [gameStats, setGameStats] = useState([]);
 
     useEffect(() => {

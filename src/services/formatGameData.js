@@ -6,7 +6,7 @@ export const formatGameData = (data) => {
         gameStatus: data.status.abstractGameState,
         gameStartTime: formatGameDate(data.gameDate),
         gameClock: data.linescore.currentPeriodTimeRemaining,
-        period: data.linescore.currentPeriod,
+        period: data.linescore.currentPeriodOrdinal,
         boxScore: data.linescore.periods,
         homeID: data.teams.home.team.id,
         awayID: data.teams.away.team.id,
@@ -14,8 +14,8 @@ export const formatGameData = (data) => {
         awayName: data.teams.away.team.name,
         homeScore: data.teams.home.score,
         awayScore: data.teams.away.score,
-        homeRecord: `(${data.teams.home.leagueRecord.wins} - ${data.teams.home.leagueRecord.losses} - ${data.teams.home.leagueRecord.ot})`,
-        awayRecord: `(${data.teams.away.leagueRecord.wins} - ${data.teams.away.leagueRecord.losses} - ${data.teams.away.leagueRecord.ot})`,
+        homeRecord: `( ${data.teams.home.leagueRecord.wins} - ${data.teams.home.leagueRecord.losses} - ${data.teams.home.leagueRecord.ot} )`,
+        awayRecord: `( ${data.teams.away.leagueRecord.wins} - ${data.teams.away.leagueRecord.losses} - ${data.teams.away.leagueRecord.ot} )`,
     };
 };
 

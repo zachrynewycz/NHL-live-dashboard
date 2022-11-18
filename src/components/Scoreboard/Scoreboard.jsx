@@ -1,19 +1,13 @@
-const Scoreboard = ({ gameData, getGameData }) => {
+import { useContext } from "react";
+import { gameDataContext } from "../../context/GameDataProvider";
+import Header from "./Header";
+
+const Scoreboard = () => {
+    const [gameData] = useContext(gameDataContext);
+
     return (
         <div className="scoreboard">
-            <div className="scoreboard__header">
-                <div id={gameData.gameStatus === "Live" ? "scoreboard__status-live" : "scoreboard__status"}>
-                    {gameData.gameStatus}
-                </div>
-
-                <div id="scoreboard__nhl">
-                    <img src={`${process.env.PUBLIC_URL}/images/svgs/nhl-logo.svg`} />
-                    <p>National Hockey League</p>
-                </div>
-
-                <button title="Update scores" id="refresh" onClick={getGameData} />
-            </div>
-            <hr />
+            <Header />
 
             {gameData.gameID && (
                 <div className="scoreboard__interface">
@@ -31,8 +25,7 @@ const Scoreboard = ({ gameData, getGameData }) => {
                         </div>
 
                         <p id="scoreboard__clock">
-                            {gameData.gameStatus === "Live" && `${gameData.gameClock} - P${gameData.period}`}
-                            {gameData.gameStatus === "Preview" && <p id="scorboard__clock--gameDate">{gameData.gameStartTime}</p>}
+                            {gameData.gameStatus === "Live" && `${gameData.gameClock} - ${gameData.period}`}
                         </p>
                     </div>
 

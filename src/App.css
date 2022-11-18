@@ -46,32 +46,18 @@ html {
     max-width: 1920px;
 }
 
-.app__left {
-    background-color: white;
-    margin: 0 25px;
-    position: relative;
-    border-radius: 15px;
-    width: 23%;
-    max-width: 442px;
-    height: 880px;
-    top: 40px;
-    box-shadow: 1px 1px 15px 0 rgb(49 49 49 / 10%);
-}
-
 .app__center {
-    position: relative;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    width: 50%;
+    width: 48%;
     height: 100%;
 }
 
-.app__right {
+.app__right,
+.app__left {
     background-color: white;
     position: relative;
     border-radius: 15px;
-    margin: 0 25px;
+    padding: 20px 25px;
+    margin: 0 40px;
     width: 23%;
     max-width: 442px;
     height: 880px;
@@ -80,28 +66,26 @@ html {
 }
 
 #app__right--last {
-    position: absolute;
+    position: relative;
     font-family: Pop-S;
+    top: 140px;
     font-size: 25px;
     color: var(--dark);
-    left: 5%;
-    top: 390px;
 }
 
 #app__left--text {
     position: relative;
+    top: 275px;
     font-family: Pop-S;
     font-size: 25px;
     color: var(--dark);
-    top: 30%;
-    left: 5%;
 }
 
 /*========== TEAM SELECTION =========== */
 
 select {
     position: absolute;
-    margin: 70px 40px;
+    margin: 70px 55px;
     width: 21%;
     min-width: 235px;
     max-width: 400px;
@@ -117,6 +101,7 @@ select {
     background-repeat: no-repeat;
     background-position: 95%;
     cursor: pointer;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.125);
 }
 
 select:focus {
@@ -148,9 +133,10 @@ option {
     height: 65px;
     width: 100%;
     position: absolute;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     align-items: center;
-    justify-content: space-around;
+    justify-items: center;
 }
 
 #scoreboard__nhl {
@@ -180,11 +166,11 @@ option {
 #scoreboard__status {
     background-color: #ededed;
     color: gray;
-    font-family: Pop-M;
+    font-family: Pop-S;
     text-align: center;
-    padding: 3px;
+    padding: 5px 15px;
+    font-size: 15px;
     border-radius: 5px;
-    width: 100px;
 }
 
 #scoreboard__status-live {
@@ -197,24 +183,6 @@ option {
     padding: 3px;
     border-radius: 5px;
     width: 80px;
-}
-
-#refresh {
-    z-index: 999;
-    cursor: pointer;
-    width: 100px;
-    background-color: transparent;
-    border: none;
-    background-image: url(../public/images/refresh-cw.svg);
-    background-repeat: no-repeat;
-    height: 25px;
-    background-size: 24px;
-    background-position: center;
-    transition: transform 0.5s ease-in-out;
-}
-
-#refresh:hover {
-    transform: rotate(180deg);
 }
 
 #scoreboard__status-live::before {
@@ -251,29 +219,26 @@ option {
 
 #scoreboard__home,
 #scoreboard__away {
-    width: 220px;
     top: 20px;
     position: relative;
 }
 
 #scoreboard__home img,
 #scoreboard__away img {
-    width: 90%;
+    width: 180px;
+    margin: -10px 0;
 }
 
 #scoreboard__team-name {
-    position: relative;
     font-size: 15px;
-    font-family: Pop-S;
+    font-family: Pop-B;
     color: var(--dark);
-    bottom: 15px;
 }
 
 #scoreboard__team-record {
-    position: relative;
-    bottom: 10px;
+    margin-top: 5px;
     font-family: Pop-S;
-    font-size: 18px;
+    font-size: 17px;
     color: gray;
 }
 
@@ -290,11 +255,6 @@ option {
     white-space: nowrap;
 }
 
-#scorboard__clock--gameDate {
-    color: grey;
-    font-size: 25px;
-}
-
 #scoreboard__score span {
     margin: 20px;
 }
@@ -306,14 +266,10 @@ option {
 
 /*=========== STANDINGS =========== */
 .standings {
-    width: 90%;
     height: 60%;
-    left: 0;
-    right: 0;
+    bottom: -290px;
     overflow-y: scroll;
-    margin: 0 auto;
-    position: absolute;
-    bottom: 40px;
+    position: relative;
     border: 2px solid #f1f1f1;
     border-radius: 8px;
 }
@@ -325,21 +281,22 @@ option {
     width: 100%;
     background-color: var(--center);
     border-bottom: 2px solid #f5f6f7;
-    font-family: Pop-M;
+    font-family: Pop-S;
     color: gray;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+
 #records {
-    width: 75px;
+    width: 105px;
     display: flex;
     justify-content: space-between;
 }
 
 .standings__row {
     height: 10.4%;
-    padding: 18px;
+    padding: 5px;
     border-bottom: 2px solid #f5f6f7;
     display: flex;
     align-items: center;
@@ -357,7 +314,7 @@ option {
 }
 
 .standings__row img {
-    width: 60px;
+    width: 55px;
 }
 
 .standings__teamname {
@@ -372,9 +329,14 @@ option {
     color: gray;
     display: flex;
     justify-content: space-between;
-    width: 70px;
-    right: 25px;
+    width: 110px;
+    right: 20px;
     position: absolute;
+}
+
+.standings__record p {
+    width: 25%;
+    text-align: center;
 }
 
 /*=========== GAMESTATS =========== */
@@ -432,13 +394,9 @@ option {
 
 /*=========== LAST GAMES =========== */
 .lastgames {
-    width: 90%;
     height: 415px;
-    bottom: 30px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    position: absolute;
+    top: 150px;
+    position: relative;
     overflow-y: scroll;
     border: 2px solid #f1f1f1;
     border-radius: 8px;
@@ -448,7 +406,7 @@ option {
 }
 
 .lastgames img {
-    width: 56px;
+    width: 50px;
 }
 
 .lastgames__scoreContainer {
@@ -458,7 +416,7 @@ option {
 .lastgames__game {
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 15px;
 }
 
 .lastgames__team {
@@ -495,12 +453,6 @@ option {
 /*=========== BOXSCORE =========== */
 .boxscore {
     position: relative;
-    width: 92%;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    top: 25px;
-    border-radius: 8px;
     font-family: Pop-M;
     color: var(--dark);
     padding: 10px;
@@ -561,11 +513,7 @@ option {
 .storelink {
     position: relative;
     top: 80px;
-    width: 90%;
     height: 75px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
     border-radius: 10px;
     background-color: var(--center);
     padding: 25px;
@@ -574,16 +522,10 @@ option {
     align-items: center;
     cursor: pointer;
     font-family: Pop-M;
-    color: rgb(28, 28, 28);
-}
-
-.storelink:hover #jerseyOverlay {
-    width: 160px;
-    height: 160px;
+    color: #1c1c1c;
 }
 
 #jerseyOverlay {
-    transition: 0.1s ease-in-out;
     width: 150px;
     height: 150px;
     position: absolute;
@@ -593,6 +535,24 @@ option {
 
 .storelink h1 {
     font-size: 22px;
+}
+
+.storelink h1::after {
+    content: "";
+    position: absolute;
+    left: 25px;
+    bottom: 15px;
+    width: 20%;
+    transform: scaleX(0);
+    height: 3px;
+    background-color: #424242;
+    transform-origin: bottom left;
+    transition: transform 0.25s ease-out;
+}
+
+.storelink h1:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
 .storelink__underline {
@@ -624,8 +584,9 @@ option {
     }
 }
 
-@media only screen and (max-width: 1280px) {
-    .app__right {
+@media only screen and (max-width: 1600px) {
+    .app__right,
+    #scoreboard__nhl p {
         display: none;
     }
 
@@ -642,9 +603,6 @@ option {
     .gamestats {
         min-width: 600px;
     }
-    #scoreboard__team-name {
-        display: none;
-    }
 
     #scoreboard__score span {
         margin: 15px;
@@ -653,15 +611,13 @@ option {
 
 @media only screen and (max-width: 768px) {
     .app__left,
-    .app__right,
-    #scoreboard__nhl p,
-    #scoreboard__team-name {
+    .app__right {
         display: none;
     }
 
     .app__center {
         width: 100%;
-        margin-top: 35px;
+        margin-top: 15px;
     }
 
     select {
@@ -677,20 +633,33 @@ option {
     .scoreboard,
     .gamestats,
     select {
-        min-width: 400px;
+        min-width: 500px;
+    }
+
+    #scoreboard__away img,
+    #scoreboard__home img {
+        width: 120px;
+    }
+
+    #scoreboard__team-name {
+        font-size: 12px;
+    }
+
+    #scoreboard__team-record {
+        font-size: 12px;
+    }
+
+    #scoreboard__status {
+        font-size: 13px;
     }
 
     .scoreboard {
         height: 250px;
-        margin-bottom: 150px;
+        margin-bottom: 175px;
     }
 
     #scoreboard__score {
         font-size: 45px;
-    }
-
-    #scoreboard__score span {
-        margin: 10px;
     }
 
     #scoreboard__clock {
@@ -704,13 +673,5 @@ option {
     .gamestats__row {
         margin-bottom: 15px;
         font-size: 18px;
-    }
-
-    .gamestats__statNumber {
-        font-size: 20px;
-    }
-
-    #scorboard__clock--gameDate {
-        font-size: 15px;
     }
 }
