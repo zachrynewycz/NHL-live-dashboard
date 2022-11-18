@@ -7,25 +7,15 @@ import teamData from "../../teams.json";
 import "react-toastify/dist/ReactToastify.css";
 
 const TeamSelect = () => {
-    const [intervalID, setIntervalID] = useState(0);
-    const [teamID, setTeamID] = useState(localStorage.getItem("ID") || "");
+    const [teamID, setTeamID] = useState("");
     const [gameData, setGameData] = useContext(gameDataContext);
 
     const handleTeamChange = (e) => {
-        clearInterval(intervalID);
         setTeamID(e.target.value);
-        localStorage.setItem("ID", e.target.value);
     };
 
     useEffect(() => {
         getGameData();
-
-        if (gameData?.gameStatus === "Live") {
-            const newInterval = setInterval(getGameData, 30000);
-            setIntervalID(newInterval);
-        }
-
-        return () => clearInterval(intervalID);
     }, [teamID]);
 
     const getGameData = () => {

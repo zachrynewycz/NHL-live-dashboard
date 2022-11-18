@@ -195,6 +195,24 @@ option {
     animation: liveStatus 5s infinite;
 }
 
+#refresh {
+    z-index: 999;
+    cursor: pointer;
+    width: 100px;
+    background-color: transparent;
+    border: none;
+    background-image: url(../public/images/refresh-cw.svg);
+    background-repeat: no-repeat;
+    height: 25px;
+    background-size: 24px;
+    background-position: center;
+    transition: transform 0.5s ease-in-out;
+}
+
+#refresh:hover {
+    transform: rotate(180deg);
+}
+
 @keyframes liveStatus {
     0% {
         opacity: 1;

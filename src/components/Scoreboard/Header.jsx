@@ -1,8 +1,13 @@
 import { useContext } from "react";
 import { gameDataContext } from "../../context/GameDataProvider";
+import { fetchGameData } from "../../services/fetchGameData";
 
 const Header = () => {
-    const [gameData] = useContext(gameDataContext);
+    const [gameData, setGameData] = useContext(gameDataContext);
+
+    const getGameData = () => {
+        fetchGameData(gameData.homeID).then((data) => setGameData(data));
+    };
 
     return (
         <>
@@ -15,6 +20,8 @@ const Header = () => {
                     <img src={`${process.env.PUBLIC_URL}/images/svgs/nhl-logo.svg`} />
                     <p>National Hockey League</p>
                 </div>
+
+                <button title="Update Scores" id="refresh" onClick={getGameData} />
             </div>
             <hr />
         </>
