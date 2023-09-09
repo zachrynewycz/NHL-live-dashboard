@@ -1,8 +1,8 @@
 # NHL-stats
 
-Users can view real time statistics of their favorite National Hockey League team. All game data is fetched from the NHL API. All 32 teams in the league are accessible. **Standings and Last games are scrollable.**
+Users can view real time statistics of their favorite National Hockey League team. All game data is fetched from the NHL API. All 32 teams in the league are accessible.
 
-**Live Demo:** https://nhl-stats-1ef9d.web.app/
+**Live Demo:** 
 
 ## Features
 
@@ -17,4 +17,4 @@ Users can view real time statistics of their favorite National Hockey League tea
 
 ## Tech/Librarys Used
 
-React, Axios, Date-Fns, React-Toast, Firebase, react-progress-bar
+React, Axios, Date-Fns, React-Toast, react-progress-bar

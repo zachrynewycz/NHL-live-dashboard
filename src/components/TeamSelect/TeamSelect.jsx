@@ -3,7 +3,7 @@ import { fetchNextGame } from "../../services/fetchNextGame";
 import { fetchGameData } from "../../services/fetchGameData";
 import { toast } from "react-toastify";
 import { gameDataContext } from "../../context/GameDataProvider";
-import teamData from "../../teams.json";
+import teamData from "../../assets/teams.json";
 import "react-toastify/dist/ReactToastify.css";
 
 const TeamSelect = () => {

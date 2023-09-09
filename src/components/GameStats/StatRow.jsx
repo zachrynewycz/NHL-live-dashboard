@@ -1,4 +1,4 @@
-import teamData from "../../teams.json";
+import teamData from "../../assets/teams.json";
 import ProgressBar from "@ramonak/react-progress-bar";
 
 const StatRow = ({ stat, gameData }) => {
