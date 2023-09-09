@@ -2,7 +2,7 @@
 
 Users can view real time statistics of their favorite National Hockey League team. All game data is fetched from the NHL API. All 32 teams in the league are accessible.
 
-**Live Demo:** 
+**Live Demo:** https://nhl-live-stats.vercel.app/
 
 ## Features
 
